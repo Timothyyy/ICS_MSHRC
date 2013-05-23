@@ -59,5 +59,11 @@ namespace ICS_MSHRC
         {
             (new StudentForm("Добавить", tableView)).Show();
         }
+
+        private void tableView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && tableView.ColumnCount == 13)
+                (new StudentForm("Редактировать", tableView)).Show();
+        }
     }
 }

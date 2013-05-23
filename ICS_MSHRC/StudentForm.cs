@@ -28,7 +28,17 @@ namespace ICS_MSHRC
 
         private void confirm_Click(object sender, EventArgs e)
         {
+            var student = new DBProvider.Student(FullName.Text, Sex.Text, Address.Text, Phone.Text, Email.Text,
+                                                 Birth.Text, Education.Text, Medical.Text,
+                                                 Nationalty.Text, Hobby.Text, Dormitory.Checked, Group.Text, Other.Text);
+            DBProvider.AddStudent(student);
+            Table.DataSource = DBProvider.Students();
+            this.Close();
+        }
 
+        private void Sex_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
         }
     }
 }

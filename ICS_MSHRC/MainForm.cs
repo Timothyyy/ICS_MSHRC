@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Data.SQLite;
 using System.Drawing;
 using System.Globalization;
 using System.Linq;
@@ -16,7 +15,6 @@ namespace ICS_MSHRC
         public MainForm()
         {
             InitializeComponent();
-            //tableView.DataSource = DBProvider.Students();
         }
 
         private void treeView_AfterSelect(object sender, TreeViewEventArgs e)
@@ -49,7 +47,17 @@ namespace ICS_MSHRC
                 return;
             }
             if (e.Node.Parent.Name == "Electr")
+            {
                 tableView.DataSource = DBProvider.Students(e.Node.Index + 3);
+                return;
+            }
+            if (e.Node.Parent.Name == "Instructors")
+                tableView.DataSource = DBProvider.Instructors(e.Node.Index + 1);
+        }
+
+        private void addStudentMenu_Click(object sender, EventArgs e)
+        {
+            (new StudentForm("Добавить", tableView)).Show();
         }
     }
 }

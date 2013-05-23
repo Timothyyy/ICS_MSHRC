@@ -18,9 +18,9 @@ namespace ICS_MSHRC
                 conn.Open();
                 var cmd = new SQLiteCommand("select * from StudentsView", conn);
                 var da = new SQLiteDataAdapter(cmd);
-                var ds = new DataSet();
-                da.Fill(ds, "Students");
-                return ds.Tables["Students"];
+                var table = new DataTable();
+                da.Fill(table);
+                return table;
             }
         }
 
@@ -32,9 +32,9 @@ namespace ICS_MSHRC
                 var cmd = new SQLiteCommand(string.Format("select * from StudentsView where [Группа] in" + 
                     " (select Code from Groups where SpecialtyId in (select Id from Specialties where Faculty = '{0}'))", faculty), conn);
                 var da = new SQLiteDataAdapter(cmd);
-                var ds = new DataSet();
-                da.Fill(ds, "Students");
-                return ds.Tables["Students"];
+                var table = new DataTable();
+                da.Fill(table);
+                return table;
             }
         }
 
@@ -46,9 +46,9 @@ namespace ICS_MSHRC
                 var cmd = new SQLiteCommand(string.Format("select * from StudentsView where [Группа] in" +
                     " (select Code from Groups where SpecialtyId = {0})", specialty), conn);
                 var da = new SQLiteDataAdapter(cmd);
-                var ds = new DataSet();
-                da.Fill(ds, "Students");
-                return ds.Tables["Students"];
+                var table = new DataTable();
+                da.Fill(table);
+                return table;
             }
         }
 
@@ -59,9 +59,9 @@ namespace ICS_MSHRC
                 conn.Open();
                 var cmd = new SQLiteCommand("select * from InstructorsView", conn);
                 var da = new SQLiteDataAdapter(cmd);
-                var ds = new DataSet();
-                da.Fill(ds, "Instructors");
-                return ds.Tables["Instructors"];
+                var table = new DataTable();
+                da.Fill(table);
+                return table;
             }
         }
 
@@ -72,9 +72,35 @@ namespace ICS_MSHRC
                 conn.Open();
                 var cmd = new SQLiteCommand("select Name from Subjects", conn);
                 var da = new SQLiteDataAdapter(cmd);
-                var ds = new DataSet();
-                da.Fill(ds, "Subjects");
-                return ds.Tables["Subjects"];
+                var table = new DataTable();
+                da.Fill(table);
+                return table;
+            }
+        }
+
+        public static DataTable Instructors(int department)
+        {
+            using (var conn = new SQLiteConnection(connectionstring))
+            {
+                conn.Open();
+                var cmd = new SQLiteCommand(string.Format("select * from InstructorsView where [Кафедра] = {0}", department), conn);
+                var da = new SQLiteDataAdapter(cmd);
+                var table = new DataTable();
+                da.Fill(table);
+                return table;
+            }
+        }
+
+        public static DataTable Groups()
+        {
+            using (var conn = new SQLiteConnection(connectionstring))
+            {
+                conn.Open();
+                var cmd = new SQLiteCommand("select Code from Groups", conn);
+                var da = new SQLiteDataAdapter(cmd);
+                var table = new DataTable();
+                da.Fill(table);
+                return table;
             }
         }
     }                                           

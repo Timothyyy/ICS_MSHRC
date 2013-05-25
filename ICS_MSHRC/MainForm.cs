@@ -22,6 +22,7 @@ namespace ICS_MSHRC
             if (e.Node.Name == "Students")
             {
                 tableView.DataSource = DBProvider.Students();
+                tableView.Columns[0].Visible = false;
                 return;
             }
             if (e.Node.Name == "Instructors")
@@ -62,8 +63,11 @@ namespace ICS_MSHRC
 
         private void tableView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0 && tableView.ColumnCount == 13)
-                (new StudentForm("Редактировать", tableView)).Show();
+            if (e.RowIndex >= 0 && tableView.ColumnCount == 14)
+            {
+                var student = new DBProvider.Student(tableView.Rows[e.RowIndex].Cells);
+                (new StudentForm("Редактировать", tableView, student, Convert.ToInt32(tableView.Rows[e.RowIndex].Cells[0].Value))).Show();
+            }
         }
     }
 }

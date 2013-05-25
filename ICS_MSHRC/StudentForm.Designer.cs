@@ -34,7 +34,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.Email = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.Nationalty = new System.Windows.Forms.TextBox();
+            this.Nationality = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.Address = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -104,12 +104,12 @@
             this.label3.TabIndex = 4;
             this.label3.Text = "Телефон:";
             // 
-            // Nationalty
+            // Nationality
             // 
-            this.Nationalty.Location = new System.Drawing.Point(107, 221);
-            this.Nationalty.Name = "Nationalty";
-            this.Nationalty.Size = new System.Drawing.Size(219, 20);
-            this.Nationalty.TabIndex = 9;
+            this.Nationality.Location = new System.Drawing.Point(107, 221);
+            this.Nationality.Name = "Nationality";
+            this.Nationality.Size = new System.Drawing.Size(219, 20);
+            this.Nationality.TabIndex = 9;
             // 
             // label4
             // 
@@ -302,7 +302,7 @@
             this.Controls.Add(this.label6);
             this.Controls.Add(this.Address);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.Nationalty);
+            this.Controls.Add(this.Nationality);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.Email);
             this.Controls.Add(this.label3);
@@ -324,7 +324,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox Email;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox Nationalty;
+        private System.Windows.Forms.TextBox Nationality;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox Address;
         private System.Windows.Forms.Label label5;

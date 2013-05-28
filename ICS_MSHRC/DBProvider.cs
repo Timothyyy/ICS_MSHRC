@@ -61,11 +61,59 @@ namespace ICS_MSHRC
             public string Other { get; set; }
         }
 
+        public class Instuctor
+        {
+            public Instuctor(string fullName, string sex, string address, string phone, string email, string education, string department, string post, string start, string other)
+            {
+                FullName = fullName;
+                Sex = sex;
+                Address = address;
+                Phone = phone;
+                Email = email;
+                Education = education;
+                Department = department;
+                Post = post;
+                Start = start;
+                Other = other;
+            }
+
+            public Instuctor(DataGridViewCellCollection studentInfo)
+            {
+                FullName = studentInfo[1].Value.ToString();
+                Sex = studentInfo[2].Value.ToString();
+                Address = studentInfo[3].Value.ToString();
+                Phone = studentInfo[4].Value.ToString();
+                Email = studentInfo[5].Value.ToString();
+                Education = studentInfo[6].Value.ToString();
+                Department = studentInfo[7].Value.ToString();
+                Post = studentInfo[8].Value.ToString();
+                Start = studentInfo[9].Value.ToString();
+                Other = studentInfo[10].Value.ToString();
+            }
+
+            public string FullName { get; set; }
+            public string Sex { get; set; }
+            public string Address { get; set; }
+            public string Phone { get; set; }
+            public string Email { get; set; }
+            public string Education { get; set; }
+            public string Department { get; set; }
+            public string Post { get; set; }
+            public string Start { get; set; }
+            public string Other { get; set; }
+        }
+
         const string Studparam = "(Name, Sex, Address, Phone, Email, Birth, Education, Medical, Nationality, Hobby, Dormitory, GroupId, Other)"
             + " values(@1, @2, @3, @4, @5, @6, @7, @8, @9, @10, @11, (select Id from Groups where Code = @12), @13)";
 
         const string Studset = "Name=@1, Sex=@2, Address=@3, Phone=@4, Email=@5, Birth=@6, Education=@7, Medical=@8,"
             + " Nationality=@9, Hobby=@10, Dormitory=@11, GroupId=(select Id from Groups where Code = @12), Other=@13 where Id=@14";
+
+        const string Instparam = "(Name, Sex, Address, Phone, Email, Education, DepartmentId, Post, Start, Other)"
+            + " values(@1, @2, @3, @4, @5, @6, (select Id from Departments where Name = @7), @8, @9, @10)";
+
+        const string Instset = "Name=@1, Sex=@2, Address=@3, Phone=@4, Email=@5, Education=@6," + 
+            " DepartmentId=(select Id from Departments where Name = @7), Post=@8, Start=@9, Other=@10 where Id=@11";
 
         const string ConnectionString = @"Data Source=C:\Users\Тимми\Desktop\MSHRC.db";// + System.IO.Directory.GetCurrentDirectory() + "\\MSHRC.db";
 
@@ -128,7 +176,8 @@ namespace ICS_MSHRC
             using (var conn = new SQLiteConnection(ConnectionString))
             {
                 conn.Open();
-                var cmd = new SQLiteCommand(string.Format("select * from InstructorsView where [Кафедра] = {0}", department), conn);
+                var cmd = new SQLiteCommand(string.Format("select * from InstructorsView where [Кафедра] =" +
+                    " (select Name from Departments where Id = {0})", department), conn);
                 var da = new SQLiteDataAdapter(cmd);
                 var table = new DataTable();
                 da.Fill(table);
@@ -141,7 +190,7 @@ namespace ICS_MSHRC
             using (var conn = new SQLiteConnection(ConnectionString))
             {
                 conn.Open();
-                var cmd = new SQLiteCommand("select Name from Subjects", conn);
+                var cmd = new SQLiteCommand("select Name as 'Название' from Subjects", conn);
                 var da = new SQLiteDataAdapter(cmd);
                 var table = new DataTable();
                 da.Fill(table);
@@ -149,8 +198,48 @@ namespace ICS_MSHRC
             }
         }
 
-
         public static DataTable Groups()
+        {
+            using (var conn = new SQLiteConnection(ConnectionString))
+            {
+                conn.Open();
+                var cmd = new SQLiteCommand("select * from GroupsView", conn);
+                var da = new SQLiteDataAdapter(cmd);
+                var table = new DataTable();
+                da.Fill(table);
+                return table;
+            }
+        }
+
+        public static DataTable Groups(string faculty)
+        {
+            using (var conn = new SQLiteConnection(ConnectionString))
+            {
+                conn.Open();
+                var cmd = new SQLiteCommand(string.Format("select * from GroupsView where [Специальность] in" +
+                    " (select Name from Specialties where Faculty = '{0}')", faculty), conn);
+                var da = new SQLiteDataAdapter(cmd);
+                var table = new DataTable();
+                da.Fill(table);
+                return table;
+            }
+        }
+
+        public static DataTable Groups(int specialty)
+        {
+            using (var conn = new SQLiteConnection(ConnectionString))
+            {
+                conn.Open();
+                var cmd = new SQLiteCommand(string.Format("select * from GroupsView where [Специальность] =" +
+                    " (select Name from Specialties where Id = {0})", specialty), conn);
+                var da = new SQLiteDataAdapter(cmd);
+                var table = new DataTable();
+                da.Fill(table);
+                return table;
+            }
+        }
+
+        public static DataTable GroupCodes()
         {
             using (var conn = new SQLiteConnection(ConnectionString))
             {
@@ -206,6 +295,60 @@ namespace ICS_MSHRC
                 cmd.Parameters.AddWithValue("@12", student.Group);
                 cmd.Parameters.AddWithValue("@13", student.Other);
                 cmd.Parameters.AddWithValue("@14", id);
+                cmd.ExecuteNonQuery();
+            }
+        }
+
+        public static DataTable Departments()
+        {
+            using (var conn = new SQLiteConnection(ConnectionString))
+            {
+                conn.Open();
+                var cmd = new SQLiteCommand("select Name from Departments", conn);
+                var da = new SQLiteDataAdapter(cmd);
+                var table = new DataTable();
+                da.Fill(table);
+                return table;
+            }
+        }
+
+        public static void AddInstructor(Instuctor instructor)
+        {
+            using (var conn = new SQLiteConnection(ConnectionString))
+            {
+                conn.Open();
+                var cmd = new SQLiteCommand("insert into Instructors" + Instparam, conn);
+                cmd.Parameters.AddWithValue("@1", instructor.FullName);
+                cmd.Parameters.AddWithValue("@2", instructor.Sex);
+                cmd.Parameters.AddWithValue("@3", instructor.Address);
+                cmd.Parameters.AddWithValue("@4", instructor.Phone);
+                cmd.Parameters.AddWithValue("@5", instructor.Email);
+                cmd.Parameters.AddWithValue("@6", instructor.Education);
+                cmd.Parameters.AddWithValue("@7", instructor.Department);
+                cmd.Parameters.AddWithValue("@8", instructor.Post);
+                cmd.Parameters.AddWithValue("@9", instructor.Start);
+                cmd.Parameters.AddWithValue("@10", instructor.Other);
+                cmd.ExecuteNonQuery();
+            }
+        }
+
+        public static void UpdateInstructor(Instuctor instructor, int id)
+        {
+            using (var conn = new SQLiteConnection(ConnectionString))
+            {
+                conn.Open();
+                var cmd = new SQLiteCommand("update Instructors set " + Instset, conn);
+                cmd.Parameters.AddWithValue("@1", instructor.FullName);
+                cmd.Parameters.AddWithValue("@2", instructor.Sex);
+                cmd.Parameters.AddWithValue("@3", instructor.Address);
+                cmd.Parameters.AddWithValue("@4", instructor.Phone);
+                cmd.Parameters.AddWithValue("@5", instructor.Email);
+                cmd.Parameters.AddWithValue("@6", instructor.Education);
+                cmd.Parameters.AddWithValue("@7", instructor.Department);
+                cmd.Parameters.AddWithValue("@8", instructor.Post);
+                cmd.Parameters.AddWithValue("@9", instructor.Start);
+                cmd.Parameters.AddWithValue("@10", instructor.Other);
+                cmd.Parameters.AddWithValue("@11", id);
                 cmd.ExecuteNonQuery();
             }
         }

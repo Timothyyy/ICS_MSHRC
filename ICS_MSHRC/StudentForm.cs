@@ -20,10 +20,7 @@ namespace ICS_MSHRC
             confirm.Text = type;
             Table = table;
             foreach (DataRow row in DBProvider.Groups().Rows)
-            {    
                 Group.Items.Add(row[0].ToString());
-                Group.AutoCompleteCustomSource.Add(row[0].ToString());
-            }
         }
 
         public StudentForm(string type, DataGridView table, DBProvider.Student student, int id)
@@ -46,7 +43,7 @@ namespace ICS_MSHRC
             Group.Text = student.Group;
             Other.Text = student.Other;
             Id = id;
-            foreach (DataRow row in DBProvider.Groups().Rows)
+            foreach (DataRow row in DBProvider.GroupCodes().Rows)
             {
                 Group.Items.Add(row[0].ToString());
                 Group.AutoCompleteCustomSource.Add(row[0].ToString());
@@ -55,6 +52,12 @@ namespace ICS_MSHRC
 
         private void confirm_Click(object sender, EventArgs e)
         {
+            for (var i = 0; i < this.Controls.Count; i++)
+                if (this.Controls[i].Text == "")
+                {
+                    MessageBox.Show("Все поля должны быть заполнены!", "Ошибка");
+                    return;
+                }
             var student = new DBProvider.Student(FullName.Text, Sex.Text, Address.Text, Phone.Text, Email.Text,
                                                  Birth.Text, Education.Text, Medical.Text,
                                                  Nationality.Text, Hobby.Text, Dormitory.Checked, Group.Text,
@@ -63,7 +66,8 @@ namespace ICS_MSHRC
                 DBProvider.AddStudent(student);
             else
                 DBProvider.UpdateStudent(student, Id);
-            Table.DataSource = DBProvider.Students();
+            //Table.DataSource = DBProvider.Students();
+
             this.Close();
         }
 

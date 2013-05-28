@@ -236,6 +236,7 @@
             this.Group.Name = "Group";
             this.Group.Size = new System.Drawing.Size(219, 21);
             this.Group.TabIndex = 12;
+            this.Group.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Sex_KeyPress);
             // 
             // label11
             // 

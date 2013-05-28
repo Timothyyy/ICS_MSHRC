@@ -50,8 +50,8 @@ namespace ICS_MSHRC
             for (var i = 0; i < this.Controls.Count; i++)
                 if (this.Controls[i].Text == "")
                 {
-                    //MessageBox.Show("Все поля должны быть заполнены!", "Ошибка");
-                    //return;
+                    MessageBox.Show("Все поля должны быть заполнены!", "Ошибка");
+                    return;
                 }
             var instructor = new DBProvider.Instuctor(FullName.Text, Sex.Text, Address.Text, Phone.Text, Email.Text,
                                                  Education.Text, Department.Text, Post.Text, Start.Text, Other.Text);

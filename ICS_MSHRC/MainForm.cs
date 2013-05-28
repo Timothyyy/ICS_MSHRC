@@ -95,6 +95,11 @@ namespace ICS_MSHRC
             (new InstructorForm("Добавить", tableView)).Show();
         }
 
+        private void addGroupMenu_Click(object sender, EventArgs e)
+        {
+            (new GroupForm("Добавить", tableView)).Show();
+        }
+
         private void tableView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0 && tableView.ColumnCount == 14)
@@ -106,6 +111,11 @@ namespace ICS_MSHRC
             {
                 var instructor = new DBProvider.Instuctor(tableView.Rows[e.RowIndex].Cells);
                 (new InstructorForm("Редактировать", tableView, instructor, Convert.ToInt32(tableView.Rows[e.RowIndex].Cells[0].Value))).Show();
+            }
+            if (e.RowIndex >= 0 && tableView.ColumnCount == 5)
+            {
+                var group = new DBProvider.Group(tableView.Rows[e.RowIndex].Cells);
+                (new GroupForm("Редактировать", tableView, group, Convert.ToInt32(tableView.Rows[e.RowIndex].Cells[0].Value))).Show();
             }
         }
     }

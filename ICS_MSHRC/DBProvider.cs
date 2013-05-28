@@ -77,18 +77,18 @@ namespace ICS_MSHRC
                 Other = other;
             }
 
-            public Instuctor(DataGridViewCellCollection studentInfo)
+            public Instuctor(DataGridViewCellCollection instructorInfo)
             {
-                FullName = studentInfo[1].Value.ToString();
-                Sex = studentInfo[2].Value.ToString();
-                Address = studentInfo[3].Value.ToString();
-                Phone = studentInfo[4].Value.ToString();
-                Email = studentInfo[5].Value.ToString();
-                Education = studentInfo[6].Value.ToString();
-                Department = studentInfo[7].Value.ToString();
-                Post = studentInfo[8].Value.ToString();
-                Start = studentInfo[9].Value.ToString();
-                Other = studentInfo[10].Value.ToString();
+                FullName = instructorInfo[1].Value.ToString();
+                Sex = instructorInfo[2].Value.ToString();
+                Address = instructorInfo[3].Value.ToString();
+                Phone = instructorInfo[4].Value.ToString();
+                Email = instructorInfo[5].Value.ToString();
+                Education = instructorInfo[6].Value.ToString();
+                Department = instructorInfo[7].Value.ToString();
+                Post = instructorInfo[8].Value.ToString();
+                Start = instructorInfo[9].Value.ToString();
+                Other = instructorInfo[10].Value.ToString();
             }
 
             public string FullName { get; set; }
@@ -101,6 +101,30 @@ namespace ICS_MSHRC
             public string Post { get; set; }
             public string Start { get; set; }
             public string Other { get; set; }
+        }
+
+        public class Group
+        {
+            public Group(string code, string specialty, string studyForm, string curator)
+            {
+                Code = code;
+                Specialty = specialty;
+                StudyForm = studyForm;
+                Curator = curator;
+            }
+
+            public Group(DataGridViewCellCollection groupInfo)
+            {
+                Code = groupInfo[1].Value.ToString();
+                Specialty = groupInfo[2].Value.ToString();
+                StudyForm = groupInfo[3].Value.ToString();
+                Curator = groupInfo[4].Value.ToString();
+            }
+
+            public string Code { get; set; }
+            public string Specialty { get; set; }
+            public string StudyForm { get; set; }
+            public string Curator { get; set; }
         }
 
         const string Studparam = "(Name, Sex, Address, Phone, Email, Birth, Education, Medical, Nationality, Hobby, Dormitory, GroupId, Other)"
@@ -349,6 +373,63 @@ namespace ICS_MSHRC
                 cmd.Parameters.AddWithValue("@9", instructor.Start);
                 cmd.Parameters.AddWithValue("@10", instructor.Other);
                 cmd.Parameters.AddWithValue("@11", id);
+                cmd.ExecuteNonQuery();
+            }
+        }
+
+        public static DataTable Specialties()
+        {
+            using (var conn = new SQLiteConnection(ConnectionString))
+            {
+                conn.Open();
+                var cmd = new SQLiteCommand("select Name from Specialties", conn);
+                var da = new SQLiteDataAdapter(cmd);
+                var table = new DataTable();
+                da.Fill(table);
+                return table;
+            }
+        }
+
+        public static DataTable Curators()
+        {
+            using (var conn = new SQLiteConnection(ConnectionString))
+            {
+                conn.Open();
+                var cmd = new SQLiteCommand("select Name from Instructors", conn);
+                var da = new SQLiteDataAdapter(cmd);
+                var table = new DataTable();
+                da.Fill(table);
+                return table;
+            }
+        }
+
+        public static void AddGroup(Group group)
+        {
+            using (var conn = new SQLiteConnection(ConnectionString))
+            {
+                conn.Open();
+                var cmd = new SQLiteCommand("insert into Groups(Code, SpecialtyId, StudyForm, Curator) values(@1," + 
+                    " (select Id from Specialties where Name = @2), @3, (select Id from Instructors where Name = @4))", conn);
+                cmd.Parameters.AddWithValue("@1", group.Code);
+                cmd.Parameters.AddWithValue("@2", group.Specialty);
+                cmd.Parameters.AddWithValue("@3", group.StudyForm);
+                cmd.Parameters.AddWithValue("@4", group.Curator);
+                cmd.ExecuteNonQuery();
+            }
+        }
+
+        public static void UpdateGroup(Group group, int id)
+        {
+            using (var conn = new SQLiteConnection(ConnectionString))
+            {
+                conn.Open();
+                var cmd = new SQLiteCommand("update Groups set Code=@1, SpecialtyId=(select Id from Specialties where Name=@2)," + 
+                    " StudyForm=@3, Curator=(select Id from Instructors where Name=@4) where Id=@5", conn);
+                cmd.Parameters.AddWithValue("@1", group.Code);
+                cmd.Parameters.AddWithValue("@2", group.Specialty);
+                cmd.Parameters.AddWithValue("@3", group.StudyForm);
+                cmd.Parameters.AddWithValue("@4", group.Curator);
+                cmd.Parameters.AddWithValue("@5", id);
                 cmd.ExecuteNonQuery();
             }
         }

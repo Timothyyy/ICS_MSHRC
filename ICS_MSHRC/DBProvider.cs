@@ -214,7 +214,7 @@ namespace ICS_MSHRC
             using (var conn = new SQLiteConnection(ConnectionString))
             {
                 conn.Open();
-                var cmd = new SQLiteCommand("select Name as 'Название' from Subjects", conn);
+                var cmd = new SQLiteCommand("select Id, Name as 'Название' from Subjects", conn);
                 var da = new SQLiteDataAdapter(cmd);
                 var table = new DataTable();
                 da.Fill(table);
@@ -256,6 +256,19 @@ namespace ICS_MSHRC
                 conn.Open();
                 var cmd = new SQLiteCommand(string.Format("select * from GroupsView where [Специальность] =" +
                     " (select Name from Specialties where Id = {0})", specialty), conn);
+                var da = new SQLiteDataAdapter(cmd);
+                var table = new DataTable();
+                da.Fill(table);
+                return table;
+            }
+        }
+
+        public static DataTable Schedule()
+        {
+            using (var conn = new SQLiteConnection(ConnectionString))
+            {
+                conn.Open();
+                var cmd = new SQLiteCommand("select * from ScheduleView", conn);
                 var da = new SQLiteDataAdapter(cmd);
                 var table = new DataTable();
                 da.Fill(table);
@@ -430,6 +443,29 @@ namespace ICS_MSHRC
                 cmd.Parameters.AddWithValue("@3", group.StudyForm);
                 cmd.Parameters.AddWithValue("@4", group.Curator);
                 cmd.Parameters.AddWithValue("@5", id);
+                cmd.ExecuteNonQuery();
+            }
+        }
+
+        public static void AddSubject(string name)
+        {
+            using (var conn = new SQLiteConnection(ConnectionString))
+            {
+                conn.Open();
+                var cmd = new SQLiteCommand("insert into Subjects(Name) values(@1)", conn);
+                cmd.Parameters.AddWithValue("@1", name);
+                cmd.ExecuteNonQuery();
+            }
+        }
+
+        public static void UpdateSubject(string subject, int id)
+        {
+            using (var conn = new SQLiteConnection(ConnectionString))
+            {
+                conn.Open();
+                var cmd = new SQLiteCommand("update Subjects set Name=@1 where Id=@2", conn);
+                cmd.Parameters.AddWithValue("@1", subject);
+                cmd.Parameters.AddWithValue("@2", id);
                 cmd.ExecuteNonQuery();
             }
         }

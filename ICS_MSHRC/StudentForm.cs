@@ -19,7 +19,7 @@ namespace ICS_MSHRC
             this.Text = type;
             confirm.Text = type;
             Table = table;
-            foreach (DataRow row in DBProvider.Groups().Rows)
+            foreach (DataRow row in DBProvider.GroupCodes().Rows)
                 Group.Items.Add(row[0].ToString());
         }
 
@@ -66,8 +66,7 @@ namespace ICS_MSHRC
                 DBProvider.AddStudent(student);
             else
                 DBProvider.UpdateStudent(student, Id);
-            //Table.DataSource = DBProvider.Students();
-
+            Table.DataSource = DBProvider.Students();
             this.Close();
         }
 

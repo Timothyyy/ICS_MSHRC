@@ -548,5 +548,22 @@ namespace ICS_MSHRC
                 cmd.ExecuteNonQuery();
             }
         }
+
+        public static DataTable TodaySchedule()
+        {
+            using (var conn = new SQLiteConnection(ConnectionString))
+            {
+                conn.Open();
+                var str = DateTime.Now.ToString("dddd");
+                str = str.Replace(str[0].ToString(), str[0].ToString().ToUpper());
+                var cmd = new SQLiteCommand("select * from TodaySchedule where [Группа]=@1 and [День]=@2 and ([Неделя]='Всегда' or [Неделя]='Числитель')", conn);
+                cmd.Parameters.AddWithValue("@1", "7654");
+                cmd.Parameters.AddWithValue("@2", str);
+                var da = new SQLiteDataAdapter(cmd);
+                var table = new DataTable();
+                da.Fill(table);
+                return table;
+            }
+        }
     }                                           
 }

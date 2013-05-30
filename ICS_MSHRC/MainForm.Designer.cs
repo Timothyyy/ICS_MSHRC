@@ -112,6 +112,7 @@
             this.addSubjectMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.scheduleMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.addScheduleMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.todayScheduleMenu = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer)).BeginInit();
             this.splitContainer.Panel1.SuspendLayout();
             this.splitContainer.Panel2.SuspendLayout();
@@ -304,7 +305,7 @@
             // addGroupMenu
             // 
             this.addGroupMenu.Name = "addGroupMenu";
-            this.addGroupMenu.Size = new System.Drawing.Size(126, 22);
+            this.addGroupMenu.Size = new System.Drawing.Size(152, 22);
             this.addGroupMenu.Text = "Добавить";
             this.addGroupMenu.Click += new System.EventHandler(this.addGroupMenu_Click);
             // 
@@ -326,7 +327,8 @@
             // scheduleMenu
             // 
             this.scheduleMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.addScheduleMenu});
+            this.addScheduleMenu,
+            this.todayScheduleMenu});
             this.scheduleMenu.Name = "scheduleMenu";
             this.scheduleMenu.Size = new System.Drawing.Size(84, 20);
             this.scheduleMenu.Text = "Расписание";
@@ -334,9 +336,16 @@
             // addScheduleMenu
             // 
             this.addScheduleMenu.Name = "addScheduleMenu";
-            this.addScheduleMenu.Size = new System.Drawing.Size(152, 22);
+            this.addScheduleMenu.Size = new System.Drawing.Size(201, 22);
             this.addScheduleMenu.Text = "Добавить";
             this.addScheduleMenu.Click += new System.EventHandler(this.addScheduleMenu_Click);
+            // 
+            // todayScheduleMenu
+            // 
+            this.todayScheduleMenu.Name = "todayScheduleMenu";
+            this.todayScheduleMenu.Size = new System.Drawing.Size(201, 22);
+            this.todayScheduleMenu.Text = "Расписание на сегодня";
+            this.todayScheduleMenu.Click += new System.EventHandler(this.todayScheduleMenu_Click);
             // 
             // MainForm
             // 
@@ -377,6 +386,7 @@
         private System.Windows.Forms.ToolStripMenuItem addSubjectMenu;
         private System.Windows.Forms.ToolStripMenuItem scheduleMenu;
         private System.Windows.Forms.ToolStripMenuItem addScheduleMenu;
+        private System.Windows.Forms.ToolStripMenuItem todayScheduleMenu;
 
     }
 }

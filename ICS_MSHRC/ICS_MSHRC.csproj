@@ -90,6 +90,12 @@
     <Compile Include="StudentForm.Designer.cs">
       <DependentUpon>StudentForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="TodaySchedule.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TodaySchedule.Designer.cs">
+      <DependentUpon>TodaySchedule.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="GroupForm.resx">
       <DependentUpon>GroupForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -114,6 +120,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="StudentForm.resx">
       <DependentUpon>StudentForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TodaySchedule.resx">
+      <DependentUpon>TodaySchedule.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config" />
     <None Include="Properties\Settings.settings">

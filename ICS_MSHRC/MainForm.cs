@@ -54,7 +54,10 @@ namespace ICS_MSHRC
             if (e.Node.Name == "Schedule")
             {
                 tableView.DataSource = DBProvider.Schedules();
+<<<<<<< HEAD
                 Settings("Расписание");
+=======
+>>>>>>> f48a9a0fc14bdb6b0d4965b6f6d81138745e6a09
                 return;
             }
             if (e.Node.Parent.Name == "Students")
@@ -169,6 +172,11 @@ namespace ICS_MSHRC
                 DBProvider.UpdateSubject(subject, Convert.ToInt32(tableView.Rows[e.RowIndex].Cells[0].Value));
                 tableView.DataSource = DBProvider.Subjects();
                 return;
+            }
+            if (e.RowIndex >= 0 && tableView.ColumnCount == 7)
+            {
+                var schedule = new DBProvider.Schedule(tableView.Rows[e.RowIndex].Cells);
+                (new ScheduleForm("Редактировать", tableView, schedule, Convert.ToInt32(tableView.Rows[e.RowIndex].Cells[0].Value))).Show();
             }
             if (e.RowIndex >= 0 && tableView.ColumnCount == 7)
             {

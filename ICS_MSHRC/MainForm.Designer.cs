@@ -336,6 +336,7 @@
             this.addScheduleMenu.Name = "addScheduleMenu";
             this.addScheduleMenu.Size = new System.Drawing.Size(152, 22);
             this.addScheduleMenu.Text = "Добавить";
+            this.addScheduleMenu.Click += new System.EventHandler(this.addScheduleMenu_Click);
             // 
             // MainForm
             // 

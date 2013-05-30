@@ -44,12 +44,11 @@ namespace ICS_MSHRC
 
         private void confirm_Click(object sender, EventArgs e)
         {
-            for (var i = 0; i < this.Controls.Count; i++)
-                if (this.Controls[i].Text == "")
-                {
-                    MessageBox.Show("Все поля должны быть заполнены!", "Ошибка");
-                    return;
-                }
+            if (Controls.OfType<ComboBox>().Count(c => c.Text == "") != 0 || Controls.OfType<TextBox>().Count(t => t.Text == "") != 0)
+            {
+                MessageBox.Show("Все поля должны быть заполнены!", "Ошибка");
+                return;
+            }
             var group = new DBProvider.Group(Code.Text, Specialty.Text, StudyForm.Text, Curator.Text);
             if (this.Text == "Добавить")
                 DBProvider.AddGroup(group);
@@ -62,6 +61,12 @@ namespace ICS_MSHRC
         private void Specialty_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = true;
+        }
+
+        private void Code_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar))
+                e.Handled = true;
         }
     }
 }

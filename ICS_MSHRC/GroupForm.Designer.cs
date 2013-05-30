@@ -54,6 +54,7 @@
             this.Code.Name = "Code";
             this.Code.Size = new System.Drawing.Size(219, 20);
             this.Code.TabIndex = 1;
+            this.Code.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Code_KeyPress);
             // 
             // StudyForm
             // 

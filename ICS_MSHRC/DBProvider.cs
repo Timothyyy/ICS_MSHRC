@@ -174,7 +174,6 @@ namespace ICS_MSHRC
 
         private const string Instset = "Name=@1, Sex=@2, Address=@3, Phone=@4, Email=@5, Education=@6," +
                                        " DepartmentId=(select Id from Departments where Name = @7), Post=@8, Start=@9, Other=@10 where Id=@11";
-<<<<<<< HEAD
 
         private const string Schedparam = "(IdSub, IdGroup, IdInst, Day, Pair, Week)"
                                           +
@@ -183,16 +182,6 @@ namespace ICS_MSHRC
         private const string Schedset = "IdSub=(select Id from Subjects where Name=@1), IdGroup=(select Id from Groups where Code=@2), IdInst=(select Id from Instructors where Name=@3), " +
             "Day=@4, Pair=@5, Week=@6 where Id=@7";
 
-=======
-
-        private const string Schedparam = "(IdSub, IdGroup, IdInst, Day, Pair, Week)"
-                                          +
-                                          " values((select Id from Subjects where Name=@1), (select Id from Groups where Code=@2), (select Id from Instructors where Name=@3), @4, @5, @6)";
-
-        private const string Schedset = "IdSub=(select Id from Subjects where Name=@1), IdGroup=(select Id from Groups where Code=@2), IdInst=(select Id from Instructors where Name=@3), " +
-            "Day=@4, Pair=@5, Week=@6 where Id=@7";
-
->>>>>>> f48a9a0fc14bdb6b0d4965b6f6d81138745e6a09
         #endregion
 
         private const string ConnectionString = @"Data Source=C:\Users\Тимми\Desktop\MSHRC.db";
@@ -559,7 +548,6 @@ namespace ICS_MSHRC
                 cmd.ExecuteNonQuery();
             }
         }
-<<<<<<< HEAD
 
         public static DataTable TodaySchedule()
         {
@@ -568,7 +556,7 @@ namespace ICS_MSHRC
                 conn.Open();
                 var str = DateTime.Now.ToString("dddd");
                 str = str.Replace(str[0].ToString(), str[0].ToString().ToUpper());
-                var cmd = new SQLiteCommand("select * from TodaySchedule where [Группа]=@1 and [День]=@2 and ([Неделя]='Всегда' or [Неделя]='Числитель')", conn);
+                var cmd = new SQLiteCommand("select * from TodaySchedule where [Группа]=@1 and [День]=@2 and ([Неделя]='Всегда' or [Неделя]='Знаменатель')", conn);
                 cmd.Parameters.AddWithValue("@1", "7654");
                 cmd.Parameters.AddWithValue("@2", str);
                 var da = new SQLiteDataAdapter(cmd);
@@ -577,7 +565,5 @@ namespace ICS_MSHRC
                 return table;
             }
         }
-=======
->>>>>>> f48a9a0fc14bdb6b0d4965b6f6d81138745e6a09
     }                                           
 }

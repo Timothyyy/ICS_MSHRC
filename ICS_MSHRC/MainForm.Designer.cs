@@ -339,7 +339,6 @@
             this.addScheduleMenu.Size = new System.Drawing.Size(201, 22);
             this.addScheduleMenu.Text = "Добавить";
             this.addScheduleMenu.Click += new System.EventHandler(this.addScheduleMenu_Click);
-<<<<<<< HEAD
             // 
             // todayScheduleMenu
             // 
@@ -347,8 +346,6 @@
             this.todayScheduleMenu.Size = new System.Drawing.Size(201, 22);
             this.todayScheduleMenu.Text = "Расписание на сегодня";
             this.todayScheduleMenu.Click += new System.EventHandler(this.todayScheduleMenu_Click);
-=======
->>>>>>> f48a9a0fc14bdb6b0d4965b6f6d81138745e6a09
             // 
             // MainForm
             // 

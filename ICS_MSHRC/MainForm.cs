@@ -54,10 +54,7 @@ namespace ICS_MSHRC
             if (e.Node.Name == "Schedule")
             {
                 tableView.DataSource = DBProvider.Schedules();
-<<<<<<< HEAD
                 Settings("Расписание");
-=======
->>>>>>> f48a9a0fc14bdb6b0d4965b6f6d81138745e6a09
                 return;
             }
             if (e.Node.Parent.Name == "Students")

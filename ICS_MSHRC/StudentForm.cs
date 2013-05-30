@@ -52,12 +52,11 @@ namespace ICS_MSHRC
 
         private void confirm_Click(object sender, EventArgs e)
         {
-            for (var i = 0; i < this.Controls.Count; i++)
-                if (this.Controls[i].Text == "")
-                {
-                    MessageBox.Show("Все поля должны быть заполнены!", "Ошибка");
-                    return;
-                }
+            if (Controls.OfType<ComboBox>().Count(c => c.Text == "") != 0 || Controls.OfType<TextBox>().Count(t => t.Text == "") != 0)
+            {
+                MessageBox.Show("Все поля должны быть заполнены!", "Ошибка");
+                return;
+            }
             var student = new DBProvider.Student(FullName.Text, Sex.Text, Address.Text, Phone.Text, Email.Text,
                                                  Birth.Text, Education.Text, Medical.Text,
                                                  Nationality.Text, Hobby.Text, Dormitory.Checked, Group.Text,

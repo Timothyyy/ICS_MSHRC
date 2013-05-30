@@ -46,7 +46,7 @@ namespace ICS_MSHRC
             }
             if (e.Node.Name == "Schedule")
             {
-                tableView.DataSource = DBProvider.Schedule();
+                tableView.DataSource = DBProvider.Schedules();
                 return;
             }
             if (e.Node.Parent.Name == "Students")
@@ -119,6 +119,11 @@ namespace ICS_MSHRC
             tableView.DataSource = DBProvider.Subjects();
         }
 
+        private void addScheduleMenu_Click(object sender, EventArgs e)
+        {
+            (new ScheduleForm("Добавить", tableView)).Show();
+        }
+
         private void tableView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0 && tableView.ColumnCount == 14)
@@ -128,7 +133,7 @@ namespace ICS_MSHRC
             }
             if (e.RowIndex >= 0 && tableView.ColumnCount == 11)
             {
-                var instructor = new DBProvider.Instuctor(tableView.Rows[e.RowIndex].Cells);
+                var instructor = new DBProvider.Instructor(tableView.Rows[e.RowIndex].Cells);
                 (new InstructorForm("Редактировать", tableView, instructor, Convert.ToInt32(tableView.Rows[e.RowIndex].Cells[0].Value))).Show();
             }
             if (e.RowIndex >= 0 && tableView.ColumnCount == 5)
@@ -143,6 +148,11 @@ namespace ICS_MSHRC
                     return;
                 DBProvider.UpdateSubject(subject, Convert.ToInt32(tableView.Rows[e.RowIndex].Cells[0].Value));
                 tableView.DataSource = DBProvider.Subjects();
+            }
+            if (e.RowIndex >= 0 && tableView.ColumnCount == 7)
+            {
+                var schedule = new DBProvider.Schedule(tableView.Rows[e.RowIndex].Cells);
+                (new ScheduleForm("Редактировать", tableView, schedule, Convert.ToInt32(tableView.Rows[e.RowIndex].Cells[0].Value))).Show();
             }
         }
     }

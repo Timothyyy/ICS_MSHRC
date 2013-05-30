@@ -61,9 +61,9 @@ namespace ICS_MSHRC
             public string Other { get; set; }
         }
 
-        public class Instuctor
+        public class Instructor
         {
-            public Instuctor(string fullName, string sex, string address, string phone, string email, string education, string department, string post, string start, string other)
+            public Instructor(string fullName, string sex, string address, string phone, string email, string education, string department, string post, string start, string other)
             {
                 FullName = fullName;
                 Sex = sex;
@@ -77,7 +77,7 @@ namespace ICS_MSHRC
                 Other = other;
             }
 
-            public Instuctor(DataGridViewCellCollection instructorInfo)
+            public Instructor(DataGridViewCellCollection instructorInfo)
             {
                 FullName = instructorInfo[1].Value.ToString();
                 Sex = instructorInfo[2].Value.ToString();
@@ -127,20 +127,66 @@ namespace ICS_MSHRC
             public string Curator { get; set; }
         }
 
-        const string Studparam = "(Name, Sex, Address, Phone, Email, Birth, Education, Medical, Nationality, Hobby, Dormitory, GroupId, Other)"
+        public class Schedule
+        {
+            public Schedule(string subject, string group, string instructor, string day, int pair, string week)
+            {
+                Subject = subject;
+                Group = group;
+                Instructor = instructor;
+                Day = day;
+                Pair = pair;
+                Week = week;
+            }
+
+            public Schedule(DataGridViewCellCollection scheduleInfo)
+            {
+                Subject = scheduleInfo[1].Value.ToString();
+                Group = scheduleInfo[2].Value.ToString();
+                Instructor = scheduleInfo[3].Value.ToString();
+                Day = scheduleInfo[4].Value.ToString();
+                Pair = Convert.ToInt32(scheduleInfo[5].Value);
+                Week = scheduleInfo[6].Value.ToString();
+            }
+
+            public string Subject { get; set; }
+            public string Group { get; set; }
+            public string Instructor { get; set; }
+            public string Day { get; set; }
+            public int Pair { get; set; }
+            public string Week { get; set; }
+        }
+
+        #region SQL parameters
+
+        private const string Studparam =
+            "(Name, Sex, Address, Phone, Email, Birth, Education, Medical, Nationality, Hobby, Dormitory, GroupId, Other)"
             + " values(@1, @2, @3, @4, @5, @6, @7, @8, @9, @10, @11, (select Id from Groups where Code = @12), @13)";
 
-        const string Studset = "Name=@1, Sex=@2, Address=@3, Phone=@4, Email=@5, Birth=@6, Education=@7, Medical=@8,"
-            + " Nationality=@9, Hobby=@10, Dormitory=@11, GroupId=(select Id from Groups where Code = @12), Other=@13 where Id=@14";
+        private const string Studset =
+            "Name=@1, Sex=@2, Address=@3, Phone=@4, Email=@5, Birth=@6, Education=@7, Medical=@8,"
+            +
+            " Nationality=@9, Hobby=@10, Dormitory=@11, GroupId=(select Id from Groups where Code = @12), Other=@13 where Id=@14";
 
-        const string Instparam = "(Name, Sex, Address, Phone, Email, Education, DepartmentId, Post, Start, Other)"
+        private const string Instparam =
+            "(Name, Sex, Address, Phone, Email, Education, DepartmentId, Post, Start, Other)"
             + " values(@1, @2, @3, @4, @5, @6, (select Id from Departments where Name = @7), @8, @9, @10)";
 
-        const string Instset = "Name=@1, Sex=@2, Address=@3, Phone=@4, Email=@5, Education=@6," + 
-            " DepartmentId=(select Id from Departments where Name = @7), Post=@8, Start=@9, Other=@10 where Id=@11";
+        private const string Instset = "Name=@1, Sex=@2, Address=@3, Phone=@4, Email=@5, Education=@6," +
+                                       " DepartmentId=(select Id from Departments where Name = @7), Post=@8, Start=@9, Other=@10 where Id=@11";
 
-        const string ConnectionString = @"Data Source=C:\Users\Тимми\Desktop\MSHRC.db";// + System.IO.Directory.GetCurrentDirectory() + "\\MSHRC.db";
+        private const string Schedparam = "(IdSub, IdGroup, IdInst, Day, Pair, Week)"
+                                          +
+                                          " values((select Id from Subjects where Name=@1), (select Id from Groups where Code=@2), (select Id from Instructors where Name=@3), @4, @5, @6)";
 
+        private const string Schedset = "IdSub=(select Id from Subjects where Name=@1), IdGroup=(select Id from Groups where Code=@2), IdInst=(select Id from Instructors where Name=@3), " +
+            "Day=@4, Pair=@5, Week=@6 where Id=@7";
+
+        #endregion
+
+        private const string ConnectionString = @"Data Source=C:\Users\Тимми\Desktop\MSHRC.db";
+                             // + System.IO.Directory.GetCurrentDirectory() + "\\MSHRC.db";
+        
         public static DataTable Students()
         {
             using (var conn = new SQLiteConnection(ConnectionString))
@@ -209,19 +255,6 @@ namespace ICS_MSHRC
             }
         }
 
-        public static DataTable Subjects()
-        {
-            using (var conn = new SQLiteConnection(ConnectionString))
-            {
-                conn.Open();
-                var cmd = new SQLiteCommand("select Id, Name as 'Название' from Subjects", conn);
-                var da = new SQLiteDataAdapter(cmd);
-                var table = new DataTable();
-                da.Fill(table);
-                return table;
-            }
-        }
-
         public static DataTable Groups()
         {
             using (var conn = new SQLiteConnection(ConnectionString))
@@ -263,7 +296,20 @@ namespace ICS_MSHRC
             }
         }
 
-        public static DataTable Schedule()
+        public static DataTable Subjects()
+        {
+            using (var conn = new SQLiteConnection(ConnectionString))
+            {
+                conn.Open();
+                var cmd = new SQLiteCommand("select Id, Name as 'Название' from Subjects", conn);
+                var da = new SQLiteDataAdapter(cmd);
+                var table = new DataTable();
+                da.Fill(table);
+                return table;
+            }
+        }
+
+        public static DataTable Schedules()
         {
             using (var conn = new SQLiteConnection(ConnectionString))
             {
@@ -349,7 +395,7 @@ namespace ICS_MSHRC
             }
         }
 
-        public static void AddInstructor(Instuctor instructor)
+        public static void AddInstructor(Instructor instructor)
         {
             using (var conn = new SQLiteConnection(ConnectionString))
             {
@@ -369,7 +415,7 @@ namespace ICS_MSHRC
             }
         }
 
-        public static void UpdateInstructor(Instuctor instructor, int id)
+        public static void UpdateInstructor(Instructor instructor, int id)
         {
             using (var conn = new SQLiteConnection(ConnectionString))
             {
@@ -466,6 +512,39 @@ namespace ICS_MSHRC
                 var cmd = new SQLiteCommand("update Subjects set Name=@1 where Id=@2", conn);
                 cmd.Parameters.AddWithValue("@1", subject);
                 cmd.Parameters.AddWithValue("@2", id);
+                cmd.ExecuteNonQuery();
+            }
+        }
+
+        public static void AddSchedule(Schedule schedule)
+        {
+            using (var conn = new SQLiteConnection(ConnectionString))
+            {
+                conn.Open();
+                var cmd = new SQLiteCommand("insert into Schedule" + Schedparam, conn);
+                cmd.Parameters.AddWithValue("@1", schedule.Subject);
+                cmd.Parameters.AddWithValue("@2", schedule.Group);
+                cmd.Parameters.AddWithValue("@3", schedule.Instructor);
+                cmd.Parameters.AddWithValue("@4", schedule.Day);
+                cmd.Parameters.AddWithValue("@5", schedule.Pair);
+                cmd.Parameters.AddWithValue("@6", schedule.Week);
+                cmd.ExecuteNonQuery();
+            }
+        }
+
+        public static void UpdateSchedule(Schedule schedule, int id)
+        {
+            using (var conn = new SQLiteConnection(ConnectionString))
+            {
+                conn.Open();
+                var cmd = new SQLiteCommand("update Schedule set " + Schedset, conn);
+                cmd.Parameters.AddWithValue("@1", schedule.Subject);
+                cmd.Parameters.AddWithValue("@2", schedule.Group);
+                cmd.Parameters.AddWithValue("@3", schedule.Instructor);
+                cmd.Parameters.AddWithValue("@4", schedule.Day);
+                cmd.Parameters.AddWithValue("@5", schedule.Pair);
+                cmd.Parameters.AddWithValue("@6", schedule.Week);
+                cmd.Parameters.AddWithValue("@7", id);
                 cmd.ExecuteNonQuery();
             }
         }

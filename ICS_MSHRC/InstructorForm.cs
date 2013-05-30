@@ -23,7 +23,7 @@ namespace ICS_MSHRC
                 Department.Items.Add(row[0].ToString());
         }
 
-        public InstructorForm(string type, DataGridView table, DBProvider.Instuctor instructor, int id)
+        public InstructorForm(string type, DataGridView table, DBProvider.Instructor instructor, int id)
         {
             InitializeComponent();
             this.Text = type;
@@ -47,13 +47,12 @@ namespace ICS_MSHRC
 
         private void confirm_Click(object sender, EventArgs e)
         {
-            for (var i = 0; i < this.Controls.Count; i++)
-                if (this.Controls[i].Text == "")
-                {
-                    MessageBox.Show("Все поля должны быть заполнены!", "Ошибка");
-                    return;
-                }
-            var instructor = new DBProvider.Instuctor(FullName.Text, Sex.Text, Address.Text, Phone.Text, Email.Text,
+            if (Controls.OfType<ComboBox>().Count(c => c.Text == "") != 0 || Controls.OfType<TextBox>().Count(t => t.Text == "") != 0)
+            {
+                MessageBox.Show("Все поля должны быть заполнены!", "Ошибка");
+                return;
+            }
+            var instructor = new DBProvider.Instructor(FullName.Text, Sex.Text, Address.Text, Phone.Text, Email.Text,
                                                  Education.Text, Department.Text, Post.Text, Start.Text, Other.Text);
             if (this.Text == "Добавить")
                 DBProvider.AddInstructor(instructor);

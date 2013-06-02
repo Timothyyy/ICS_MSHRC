@@ -125,6 +125,7 @@
             this.addGroupMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.subjectsMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.addSubjectMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.scheduleMenu = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer)).BeginInit();
             this.splitContainer.Panel1.SuspendLayout();
             this.splitContainer.Panel2.SuspendLayout();
@@ -281,7 +282,8 @@
             this.studentsMenu,
             this.instructorsMenu,
             this.groupsMenu,
-            this.subjectsMenu});
+            this.subjectsMenu,
+            this.scheduleMenu});
             this.menu.Location = new System.Drawing.Point(0, 0);
             this.menu.Name = "menu";
             this.menu.Size = new System.Drawing.Size(966, 24);
@@ -299,7 +301,7 @@
             // addStudentMenu
             // 
             this.addStudentMenu.Name = "addStudentMenu";
-            this.addStudentMenu.Size = new System.Drawing.Size(126, 22);
+            this.addStudentMenu.Size = new System.Drawing.Size(152, 22);
             this.addStudentMenu.Text = "Добавить";
             this.addStudentMenu.Click += new System.EventHandler(this.addStudentMenu_Click);
             // 
@@ -329,7 +331,7 @@
             // addGroupMenu
             // 
             this.addGroupMenu.Name = "addGroupMenu";
-            this.addGroupMenu.Size = new System.Drawing.Size(126, 22);
+            this.addGroupMenu.Size = new System.Drawing.Size(152, 22);
             this.addGroupMenu.Text = "Добавить";
             this.addGroupMenu.Click += new System.EventHandler(this.addGroupMenu_Click);
             // 
@@ -347,6 +349,13 @@
             this.addSubjectMenu.Size = new System.Drawing.Size(126, 22);
             this.addSubjectMenu.Text = "Добавить";
             this.addSubjectMenu.Click += new System.EventHandler(this.addSubjectMenu_Click);
+            // 
+            // scheduleMenu
+            // 
+            this.scheduleMenu.Name = "scheduleMenu";
+            this.scheduleMenu.Size = new System.Drawing.Size(84, 20);
+            this.scheduleMenu.Text = "Расписание";
+            this.scheduleMenu.Click += new System.EventHandler(this.scheduleMenu_Click);
             // 
             // MainForm
             // 
@@ -385,6 +394,7 @@
         private System.Windows.Forms.ToolStripMenuItem addGroupMenu;
         private System.Windows.Forms.ToolStripMenuItem subjectsMenu;
         private System.Windows.Forms.ToolStripMenuItem addSubjectMenu;
+        private System.Windows.Forms.ToolStripMenuItem scheduleMenu;
 
     }
 }

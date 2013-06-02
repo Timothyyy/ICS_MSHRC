@@ -11,63 +11,77 @@ namespace ICS_MSHRC
 {
     public partial class ScheduleForm : Form
     {
-        private DataGridView Table;
-        private int Id;
-        public ScheduleForm(string type, DataGridView table)
+        public ScheduleForm()
         {
             InitializeComponent();
-            this.Text = type;
-            confirm.Text = type;
-            Table = table;
-            foreach (DataRow row in DBProvider.Subjects().Rows)
-                Subject.Items.Add(row[1].ToString());
-            foreach (DataRow row in DBProvider.GroupCodes().Rows)
-                Group.Items.Add(row[0].ToString());
-            foreach (DataRow row in DBProvider.Curators().Rows)
-                Instructor.Items.Add(row[0].ToString());
+            tabControl.TabPages.Remove(scheduleAdmin);
         }
 
-        public ScheduleForm(string type, DataGridView table, DBProvider.Schedule schedule, int id)
+        private enum ForType
         {
-            InitializeComponent();
-            this.Text = type;
-            confirm.Text = type;
-            Table = table;
-            Id = id;
-            Subject.Text = schedule.Subject;
-            Group.Text = schedule.Group;
-            Instructor.Text = schedule.Instructor;
-            Day.Text = schedule.Day;
-            Pair.Text = schedule.Pair.ToString();
-            panel.Controls.OfType<RadioButton>().First(r => r.Text == schedule.Week).Checked = true;
-            foreach (DataRow row in DBProvider.Subjects().Rows)
-                Subject.Items.Add(row[1].ToString());
-            foreach (DataRow row in DBProvider.GroupCodes().Rows)
-                Group.Items.Add(row[0].ToString());
-            foreach (DataRow row in DBProvider.Curators().Rows)
-                Instructor.Items.Add(row[0].ToString());
-        }
+            Выберите_группу = 0,
+            Выберите_преподавателя = 1,
+            Выберите_предмет = 2,
+            Выберите_студента = 3
+        };
 
-        private void confirm_Click(object sender, EventArgs e)
+        private enum Choice
         {
-            if (Controls.OfType<ComboBox>().Count(c => c.Text == "") != 0)
+            Groups = 0,
+            Instructors = 1,
+            Subjects = 2,
+            Students = 3
+        };
+
+        private enum Column
+        {
+            Группа = 0,
+            Преподаватель = 1,
+            Предмет = 2,
+            Id = 3
+        };
+
+        private void scheduleFor_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            /*var a = Enum.GetName(typeof(ForType), 0);
+            MessageBox.Show(a);
+            return;*/
+            todayScheduleView.DataSource = null;
+            choice.Text = "";
+            choice.Items.Clear();
+            panel.Visible = true;
+            tabControl.TabPages.Remove(scheduleAdmin);
+            if (scheduleFor.SelectedIndex == 0)
+                tabControl.TabPages.Add(scheduleAdmin);
+            label2.Text = Enum.GetName(typeof (ForType), scheduleFor.SelectedIndex).Replace('_', ' ') + ':';
+            var view = Enum.GetName(typeof (Choice), scheduleFor.SelectedIndex);
+            foreach (DataRow row in DBProvider.Choices(view).Rows)
             {
-                MessageBox.Show("Все поля должны быть заполнены!", "Ошибка");
-                return;
+                choice.Items.Add(row[0].ToString());
             }
-            var schedule = new DBProvider.Schedule(Subject.Text, Group.Text, Instructor.Text, Day.Text, Convert.ToInt32(Pair.Text),
-                panel.Controls.OfType<RadioButton>().First(r => r.Checked).Text);
-            if (this.Text == "Добавить")
-                DBProvider.AddSchedule(schedule);
-            else
-                DBProvider.UpdateSchedule(schedule, Id);
-            Table.DataSource = DBProvider.Schedules();
-            this.Close();
         }
 
-        private void Subject_KeyPress(object sender, KeyPressEventArgs e)
+        private void choice_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var column = Enum.GetName(typeof(Column), scheduleFor.SelectedIndex);
+            var week = panel.Controls.OfType<RadioButton>().First(r => r.Checked).Text;
+            todayScheduleView.DataSource = DBProvider.TodaySchedule(column, choice.Text, week);
+        }
+
+        private void scheduleFor_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = true;
+        }
+
+        private void radioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            if (choice.Text != "")
+                if (((RadioButton) sender).Checked)
+                {
+                    var column = Enum.GetName(typeof(Column), scheduleFor.SelectedIndex);
+                    var week = ((RadioButton) sender).Text;
+                    todayScheduleView.DataSource = DBProvider.TodaySchedule(column, choice.Text, week);
+                }
         }
     }
 }

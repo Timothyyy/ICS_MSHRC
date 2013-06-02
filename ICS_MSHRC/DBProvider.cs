@@ -565,16 +565,29 @@ namespace ICS_MSHRC
             }
         }
 
-        public static DataTable TodaySchedule()
+        public static DataTable Choices(string view)
         {
             using (var conn = new SQLiteConnection(ConnectionString))
             {
                 conn.Open();
-                var str = DateTime.Now.ToString("dddd");
-                str = str.Replace(str[0].ToString(), str[0].ToString().ToUpper());
-                var cmd = new SQLiteCommand("select * from TodaySchedule where [Группа]=@1 and [День]=@2 and ([Неделя]='Всегда' or [Неделя]='Знаменатель')", conn);
-                cmd.Parameters.AddWithValue("@1", "7654");
-                cmd.Parameters.AddWithValue("@2", str);
+                var column = view == "Groups" ? "Code" : "Name";
+                var cmd = new SQLiteCommand(string.Format("select {0} from {1}", column, view), conn);
+                var da = new SQLiteDataAdapter(cmd);
+                var table = new DataTable();
+                da.Fill(table);
+                return table;
+            }
+        }
+
+        public static DataTable TodaySchedule(string column, string value, string week)
+        {
+            using (var conn = new SQLiteConnection(ConnectionString))
+            {
+                conn.Open();
+                var str = "Среда";/*DateTime.Now.ToString("dddd");
+                str = str.Replace(str[0].ToString(), str[0].ToString().ToUpper());*/
+                var cmd = new SQLiteCommand(string.Format("select * from TodaySchedule where " +
+                    "[{0}]='{1}' and [День]='{2}' and ([Неделя]='Всегда' or [Неделя]='{3}')", column, value, str, week), conn);
                 var da = new SQLiteDataAdapter(cmd);
                 var table = new DataTable();
                 da.Fill(table);

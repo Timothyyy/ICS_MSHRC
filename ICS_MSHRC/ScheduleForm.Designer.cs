@@ -28,246 +28,241 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
-            this.Subject = new System.Windows.Forms.ComboBox();
-            this.Group = new System.Windows.Forms.ComboBox();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.tabControl = new System.Windows.Forms.TabControl();
+            this.todaySchedule = new System.Windows.Forms.TabPage();
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.panel = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
-            this.Instructor = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.Day = new System.Windows.Forms.ComboBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.Pair = new System.Windows.Forms.NumericUpDown();
-            this.Always = new System.Windows.Forms.RadioButton();
+            this.label1 = new System.Windows.Forms.Label();
+            this.scheduleFor = new System.Windows.Forms.ComboBox();
+            this.todayScheduleView = new System.Windows.Forms.DataGridView();
+            this.scheduleAdmin = new System.Windows.Forms.TabPage();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.choice = new System.Windows.Forms.ComboBox();
             this.Numerator = new System.Windows.Forms.RadioButton();
             this.Denominator = new System.Windows.Forms.RadioButton();
-            this.label5 = new System.Windows.Forms.Label();
-            this.panel = new System.Windows.Forms.Panel();
-            this.label6 = new System.Windows.Forms.Label();
-            this.confirm = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.Pair)).BeginInit();
+            this.tabControl.SuspendLayout();
+            this.todaySchedule.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
+            this.splitContainer1.Panel1.SuspendLayout();
+            this.splitContainer1.Panel2.SuspendLayout();
+            this.splitContainer1.SuspendLayout();
             this.panel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.todayScheduleView)).BeginInit();
+            this.scheduleAdmin.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
-            // label1
+            // tabControl
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(46, 15);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(55, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Предмет:";
+            this.tabControl.Controls.Add(this.todaySchedule);
+            this.tabControl.Controls.Add(this.scheduleAdmin);
+            this.tabControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl.Location = new System.Drawing.Point(0, 0);
+            this.tabControl.Name = "tabControl";
+            this.tabControl.SelectedIndex = 0;
+            this.tabControl.Size = new System.Drawing.Size(773, 390);
+            this.tabControl.TabIndex = 0;
             // 
-            // Subject
+            // todaySchedule
             // 
-            this.Subject.FormattingEnabled = true;
-            this.Subject.Location = new System.Drawing.Point(107, 12);
-            this.Subject.Name = "Subject";
-            this.Subject.Size = new System.Drawing.Size(207, 21);
-            this.Subject.TabIndex = 1;
-            this.Subject.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Subject_KeyPress);
+            this.todaySchedule.BackColor = System.Drawing.SystemColors.Control;
+            this.todaySchedule.Controls.Add(this.splitContainer1);
+            this.todaySchedule.Location = new System.Drawing.Point(4, 22);
+            this.todaySchedule.Name = "todaySchedule";
+            this.todaySchedule.Padding = new System.Windows.Forms.Padding(3);
+            this.todaySchedule.Size = new System.Drawing.Size(765, 364);
+            this.todaySchedule.TabIndex = 0;
+            this.todaySchedule.Text = "Расписание на сегодня";
             // 
-            // Group
+            // splitContainer1
             // 
-            this.Group.FormattingEnabled = true;
-            this.Group.Location = new System.Drawing.Point(107, 39);
-            this.Group.Name = "Group";
-            this.Group.Size = new System.Drawing.Size(207, 21);
-            this.Group.TabIndex = 3;
-            this.Group.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Subject_KeyPress);
+            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer1.IsSplitterFixed = true;
+            this.splitContainer1.Location = new System.Drawing.Point(3, 3);
+            this.splitContainer1.Name = "splitContainer1";
+            // 
+            // splitContainer1.Panel1
+            // 
+            this.splitContainer1.Panel1.Controls.Add(this.panel);
+            this.splitContainer1.Panel1.Controls.Add(this.label1);
+            this.splitContainer1.Panel1.Controls.Add(this.scheduleFor);
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.Controls.Add(this.todayScheduleView);
+            this.splitContainer1.Size = new System.Drawing.Size(759, 358);
+            this.splitContainer1.SplitterDistance = 245;
+            this.splitContainer1.SplitterWidth = 1;
+            this.splitContainer1.TabIndex = 0;
+            // 
+            // panel
+            // 
+            this.panel.Controls.Add(this.Denominator);
+            this.panel.Controls.Add(this.Numerator);
+            this.panel.Controls.Add(this.choice);
+            this.panel.Controls.Add(this.label2);
+            this.panel.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel.Location = new System.Drawing.Point(0, 33);
+            this.panel.Name = "panel";
+            this.panel.Size = new System.Drawing.Size(245, 325);
+            this.panel.TabIndex = 2;
+            this.panel.Visible = false;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(56, 42);
+            this.label2.Location = new System.Drawing.Point(5, 9);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(45, 13);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Группа:";
+            this.label2.Size = new System.Drawing.Size(0, 13);
+            this.label2.TabIndex = 0;
             // 
-            // Instructor
+            // label1
             // 
-            this.Instructor.FormattingEnabled = true;
-            this.Instructor.Location = new System.Drawing.Point(107, 66);
-            this.Instructor.Name = "Instructor";
-            this.Instructor.Size = new System.Drawing.Size(207, 21);
-            this.Instructor.TabIndex = 5;
-            this.Instructor.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Subject_KeyPress);
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(5, 9);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(31, 13);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Для:";
             // 
-            // label3
+            // scheduleFor
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 69);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(89, 13);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "Преподаватель:";
+            this.scheduleFor.FormattingEnabled = true;
+            this.scheduleFor.Items.AddRange(new object[] {
+            "группы",
+            "преподавателя",
+            "предмета",
+            "студента"});
+            this.scheduleFor.Location = new System.Drawing.Point(42, 6);
+            this.scheduleFor.Name = "scheduleFor";
+            this.scheduleFor.Size = new System.Drawing.Size(198, 21);
+            this.scheduleFor.TabIndex = 0;
+            this.scheduleFor.SelectedIndexChanged += new System.EventHandler(this.scheduleFor_SelectedIndexChanged);
+            this.scheduleFor.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.scheduleFor_KeyPress);
             // 
-            // Day
+            // todayScheduleView
             // 
-            this.Day.FormattingEnabled = true;
-            this.Day.Items.AddRange(new object[] {
-            "Понедельник",
-            "Вторник",
-            "Среда",
-            "Четверг",
-            "Пятница",
-            "Суббота"});
-            this.Day.Location = new System.Drawing.Point(107, 93);
-            this.Day.Name = "Day";
-            this.Day.Size = new System.Drawing.Size(207, 21);
-            this.Day.TabIndex = 7;
-            this.Day.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Subject_KeyPress);
+            this.todayScheduleView.AllowUserToAddRows = false;
+            this.todayScheduleView.AllowUserToDeleteRows = false;
+            this.todayScheduleView.AllowUserToResizeColumns = false;
+            this.todayScheduleView.AllowUserToResizeRows = false;
+            this.todayScheduleView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.todayScheduleView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.todayScheduleView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.todayScheduleView.DefaultCellStyle = dataGridViewCellStyle4;
+            this.todayScheduleView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.todayScheduleView.Location = new System.Drawing.Point(0, 0);
+            this.todayScheduleView.MultiSelect = false;
+            this.todayScheduleView.Name = "todayScheduleView";
+            this.todayScheduleView.ReadOnly = true;
+            this.todayScheduleView.RowHeadersVisible = false;
+            this.todayScheduleView.Size = new System.Drawing.Size(513, 358);
+            this.todayScheduleView.TabIndex = 0;
             // 
-            // label4
+            // scheduleAdmin
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(64, 96);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(37, 13);
-            this.label4.TabIndex = 6;
-            this.label4.Text = "День:";
+            this.scheduleAdmin.BackColor = System.Drawing.SystemColors.Control;
+            this.scheduleAdmin.Controls.Add(this.dataGridView1);
+            this.scheduleAdmin.Location = new System.Drawing.Point(4, 22);
+            this.scheduleAdmin.Name = "scheduleAdmin";
+            this.scheduleAdmin.Padding = new System.Windows.Forms.Padding(3);
+            this.scheduleAdmin.Size = new System.Drawing.Size(765, 364);
+            this.scheduleAdmin.TabIndex = 1;
+            this.scheduleAdmin.Text = "Редактирование расписания";
             // 
-            // Pair
+            // dataGridView1
             // 
-            this.Pair.Location = new System.Drawing.Point(107, 120);
-            this.Pair.Maximum = new decimal(new int[] {
-            8,
-            0,
-            0,
-            0});
-            this.Pair.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.Pair.Name = "Pair";
-            this.Pair.ReadOnly = true;
-            this.Pair.Size = new System.Drawing.Size(207, 20);
-            this.Pair.TabIndex = 8;
-            this.Pair.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(214, 106);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(240, 150);
+            this.dataGridView1.TabIndex = 0;
             // 
-            // Always
+            // choice
             // 
-            this.Always.AutoSize = true;
-            this.Always.Checked = true;
-            this.Always.Location = new System.Drawing.Point(35, 3);
-            this.Always.Name = "Always";
-            this.Always.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.Always.Size = new System.Drawing.Size(61, 17);
-            this.Always.TabIndex = 9;
-            this.Always.TabStop = true;
-            this.Always.Text = "Всегда";
-            this.Always.UseVisualStyleBackColor = true;
+            this.choice.FormattingEnabled = true;
+            this.choice.Location = new System.Drawing.Point(5, 25);
+            this.choice.Name = "choice";
+            this.choice.Size = new System.Drawing.Size(235, 21);
+            this.choice.TabIndex = 1;
+            this.choice.SelectedIndexChanged += new System.EventHandler(this.choice_SelectedIndexChanged);
+            this.choice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.scheduleFor_KeyPress);
             // 
             // Numerator
             // 
             this.Numerator.AutoSize = true;
-            this.Numerator.Location = new System.Drawing.Point(16, 26);
+            this.Numerator.Checked = true;
+            this.Numerator.Location = new System.Drawing.Point(18, 52);
             this.Numerator.Name = "Numerator";
             this.Numerator.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.Numerator.Size = new System.Drawing.Size(80, 17);
-            this.Numerator.TabIndex = 10;
+            this.Numerator.TabIndex = 2;
             this.Numerator.TabStop = true;
             this.Numerator.Text = "Числитель";
             this.Numerator.UseVisualStyleBackColor = true;
+            this.Numerator.CheckedChanged += new System.EventHandler(this.radioButton_CheckedChanged);
             // 
             // Denominator
             // 
             this.Denominator.AutoSize = true;
-            this.Denominator.Location = new System.Drawing.Point(3, 49);
+            this.Denominator.Location = new System.Drawing.Point(5, 75);
             this.Denominator.Name = "Denominator";
             this.Denominator.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.Denominator.Size = new System.Drawing.Size(93, 17);
-            this.Denominator.TabIndex = 11;
-            this.Denominator.TabStop = true;
+            this.Denominator.TabIndex = 3;
             this.Denominator.Text = "Знаменатель";
             this.Denominator.UseVisualStyleBackColor = true;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(65, 122);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(36, 13);
-            this.label5.TabIndex = 12;
-            this.label5.Text = "Пара:";
-            // 
-            // panel
-            // 
-            this.panel.Controls.Add(this.Always);
-            this.panel.Controls.Add(this.Numerator);
-            this.panel.Controls.Add(this.Denominator);
-            this.panel.Location = new System.Drawing.Point(107, 146);
-            this.panel.Name = "panel";
-            this.panel.Size = new System.Drawing.Size(103, 70);
-            this.panel.TabIndex = 13;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(53, 174);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(48, 13);
-            this.label6.TabIndex = 14;
-            this.label6.Text = "Неделя:";
-            // 
-            // confirm
-            // 
-            this.confirm.Location = new System.Drawing.Point(107, 222);
-            this.confirm.Name = "confirm";
-            this.confirm.Size = new System.Drawing.Size(103, 23);
-            this.confirm.TabIndex = 15;
-            this.confirm.UseVisualStyleBackColor = true;
-            this.confirm.Click += new System.EventHandler(this.confirm_Click);
+            this.Denominator.CheckedChanged += new System.EventHandler(this.radioButton_CheckedChanged);
             // 
             // ScheduleForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(326, 259);
-            this.Controls.Add(this.confirm);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.panel);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.Pair);
-            this.Controls.Add(this.Day);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.Instructor);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.Group);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.Subject);
-            this.Controls.Add(this.label1);
+            this.ClientSize = new System.Drawing.Size(773, 390);
+            this.Controls.Add(this.tabControl);
             this.Name = "ScheduleForm";
-            ((System.ComponentModel.ISupportInitialize)(this.Pair)).EndInit();
+            this.Text = "Расписание";
+            this.tabControl.ResumeLayout(false);
+            this.todaySchedule.ResumeLayout(false);
+            this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel1.PerformLayout();
+            this.splitContainer1.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
+            this.splitContainer1.ResumeLayout(false);
             this.panel.ResumeLayout(false);
             this.panel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.todayScheduleView)).EndInit();
+            this.scheduleAdmin.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
+        private System.Windows.Forms.TabControl tabControl;
+        private System.Windows.Forms.TabPage todaySchedule;
+        private System.Windows.Forms.SplitContainer splitContainer1;
+        private System.Windows.Forms.TabPage scheduleAdmin;
+        private System.Windows.Forms.DataGridView todayScheduleView;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox Subject;
-        private System.Windows.Forms.ComboBox Group;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox Instructor;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ComboBox Day;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.NumericUpDown Pair;
-        private System.Windows.Forms.RadioButton Always;
-        private System.Windows.Forms.RadioButton Numerator;
-        private System.Windows.Forms.RadioButton Denominator;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.ComboBox scheduleFor;
+        private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Panel panel;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Button confirm;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ComboBox choice;
+        private System.Windows.Forms.RadioButton Denominator;
+        private System.Windows.Forms.RadioButton Numerator;
+
+
     }
 }

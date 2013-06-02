@@ -9,7 +9,6 @@ using System.Windows.Forms;
 
 namespace ICS_MSHRC
 {
-
     public partial class MainForm : Form
     {
         public MainForm()
@@ -87,6 +86,7 @@ namespace ICS_MSHRC
             tableView.Columns[0].Visible = false;
             foreach (ToolStripMenuItem item in menu.Items)
                 item.Enabled = item.Text == type;
+            menu.Items[4].Enabled = true;
         }
 
         private void treeView_AfterSelect(object sender, TreeViewEventArgs e)
@@ -246,6 +246,11 @@ namespace ICS_MSHRC
                     tableView.DataSource = DBProvider.Subjects();
                 }
             }
+        }
+
+        private void scheduleMenu_Click(object sender, EventArgs e)
+        {
+            (new ScheduleForm()).Show();
         }
     }
 }

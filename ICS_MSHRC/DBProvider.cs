@@ -184,8 +184,8 @@ namespace ICS_MSHRC
 
         #endregion
 
-        private const string ConnectionString = @"Data Source=C:\Users\Тимми\Desktop\MSHRC.db";
-                             // + System.IO.Directory.GetCurrentDirectory() + "\\MSHRC.db";
+        private static readonly string ConnectionString = @"Data Source=C:\Users\Тимми\Desktop\MSHRC.db";
+        //"Data Source=" + System.IO.Directory.GetCurrentDirectory() + "\\MSHRC.db";
         
         public static DataTable Students()
         {
@@ -301,7 +301,21 @@ namespace ICS_MSHRC
             using (var conn = new SQLiteConnection(ConnectionString))
             {
                 conn.Open();
-                var cmd = new SQLiteCommand("select Id, Name as 'Название' from Subjects", conn);
+                var cmd = new SQLiteCommand("select * from SubjectsView", conn);
+                var da = new SQLiteDataAdapter(cmd);
+                var table = new DataTable();
+                da.Fill(table);
+                return table;
+            }
+        }
+
+        public static DataTable Subjects(int department)
+        {
+            using (var conn = new SQLiteConnection(ConnectionString))
+            {
+                conn.Open();
+                var cmd = new SQLiteCommand(string.Format("select * from SubjectsView where [Кафедра] =" +
+                    " (select Name from Departments where Id = {0})", department), conn);
                 var da = new SQLiteDataAdapter(cmd);
                 var table = new DataTable();
                 da.Fill(table);
@@ -493,25 +507,27 @@ namespace ICS_MSHRC
             }
         }
 
-        public static void AddSubject(string name)
+        public static void AddSubject(string name, int department)
         {
             using (var conn = new SQLiteConnection(ConnectionString))
             {
                 conn.Open();
-                var cmd = new SQLiteCommand("insert into Subjects(Name) values(@1)", conn);
+                var cmd = new SQLiteCommand("insert into Subjects(Name, IdDep) values(@1, @2)", conn);
                 cmd.Parameters.AddWithValue("@1", name);
+                cmd.Parameters.AddWithValue("@2", department);
                 cmd.ExecuteNonQuery();
             }
         }
 
-        public static void UpdateSubject(string subject, int id)
+        public static void UpdateSubject(string subject, int department, int id)
         {
             using (var conn = new SQLiteConnection(ConnectionString))
             {
                 conn.Open();
-                var cmd = new SQLiteCommand("update Subjects set Name=@1 where Id=@2", conn);
+                var cmd = new SQLiteCommand("update Subjects set Name=@1, IdDep=@2 where Id=@3", conn);
                 cmd.Parameters.AddWithValue("@1", subject);
-                cmd.Parameters.AddWithValue("@2", id);
+                cmd.Parameters.AddWithValue("@2", department);
+                cmd.Parameters.AddWithValue("@3", id);
                 cmd.ExecuteNonQuery();
             }
         }

@@ -256,5 +256,35 @@ namespace ICS_MSHRC
         {
             (new ScheduleForm()).Show();
         }
+
+        private void tableView_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Delete && MessageBox.Show("Вы действительно хотите удалить выбранную запись?", "Предупреждение", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                if (tableView.ColumnCount == 14)
+                {
+                    DBProvider.DeleteRow("Students", Convert.ToInt32(tableView.CurrentRow.Cells[0].Value.ToString()));
+                    tableView.DataSource = DBProvider.Students();
+                    return;
+                }
+                if (tableView.ColumnCount == 11)
+                {
+                    DBProvider.DeleteRow("Instructors", Convert.ToInt32(tableView.CurrentRow.Cells[0].Value.ToString()));
+                    tableView.DataSource = DBProvider.Instructors();
+                    return;
+                }
+                if (tableView.ColumnCount == 5)
+                {
+                    DBProvider.DeleteRow("Groups", Convert.ToInt32(tableView.CurrentRow.Cells[0].Value.ToString()));
+                    tableView.DataSource = DBProvider.Groups();
+                    return;
+                }
+                if (tableView.ColumnCount == 3)
+                {
+                    DBProvider.DeleteRow("Subjects", Convert.ToInt32(tableView.CurrentRow.Cells[0].Value.ToString()));
+                    tableView.DataSource = DBProvider.Subjects();
+                }
+            }
+        }
     }
 }

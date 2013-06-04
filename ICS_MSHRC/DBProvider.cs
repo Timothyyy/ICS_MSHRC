@@ -139,16 +139,6 @@ namespace ICS_MSHRC
                 Week = week;
             }
 
-            public Schedule(DataGridViewCellCollection scheduleInfo)
-            {
-                Subject = scheduleInfo[1].Value.ToString();
-                Group = scheduleInfo[2].Value.ToString();
-                Instructor = scheduleInfo[3].Value.ToString();
-                Day = scheduleInfo[4].Value.ToString();
-                Pair = Convert.ToInt32(scheduleInfo[5].Value);
-                Week = scheduleInfo[6].Value.ToString();
-            }
-
             public string Subject { get; set; }
             public string Group { get; set; }
             public string Instructor { get; set; }
@@ -566,7 +556,7 @@ namespace ICS_MSHRC
             }
         }
 
-        public static DataTable Choices(string view)
+        public static DataTable Choice(string view)
         {
             using (var conn = new SQLiteConnection(ConnectionString))
             {
@@ -595,5 +585,35 @@ namespace ICS_MSHRC
                 return table;
             }
         }
+
+        public static void DeleteRow(string table, int id)
+        {
+            using (var conn = new SQLiteConnection(ConnectionString))
+            {
+                conn.Open();
+                var cmd = new SQLiteCommand(string.Format("delete from {0} where Id={1}", table, id), conn);
+                cmd.ExecuteNonQuery();
+            }
+        }
+
+        /*public static void DeleteInstructor(int id)
+        {
+
+        }
+
+        public static void DeleteGroup(int id)
+        {
+
+        }
+
+        public static void DeleteSubject(int id)
+        {
+
+        }
+
+        public static void DeleteSchedule(int id)
+        {
+
+        }*/
     }                                           
 }

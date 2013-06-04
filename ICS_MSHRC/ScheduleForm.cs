@@ -61,7 +61,7 @@ namespace ICS_MSHRC
                 tabControl.TabPages.Add(scheduleAdmin);
             label2.Text = Enum.GetName(typeof (ForType), scheduleFor.SelectedIndex).Replace('_', ' ') + ':';
             var view = Enum.GetName(typeof (Choice), scheduleFor.SelectedIndex);
-            foreach (DataRow row in DBProvider.Choices(view).Rows)
+            foreach (DataRow row in DBProvider.Choice(view).Rows)
             {
                 choice.Items.Add(row[0].ToString());
             }
@@ -146,6 +146,15 @@ namespace ICS_MSHRC
                 DBProvider.UpdateSchedule(schedule, Convert.ToInt32(scheduleView.Rows[scheduleView.SelectedCells[0].RowIndex].Cells[0].Value));
             scheduleView.DataSource = DBProvider.Schedules(Group.Text);
             cancel_Click(null, null);
+        }
+
+        private void scheduleView_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Delete && MessageBox.Show("Вы действительно хотите удалить выбранную запись?", "Предупреждение", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                DBProvider.DeleteRow("Schedule", Convert.ToInt32(scheduleView.CurrentRow.Cells[0].Value.ToString()));
+                scheduleView.DataSource = DBProvider.Schedules(Group.Text);
+            }
         }
     }
 }

@@ -323,12 +323,13 @@ namespace ICS_MSHRC
             }
         }
 
-        public static DataTable Schedules()
+        public static DataTable Schedules(string group)
         {
             using (var conn = new SQLiteConnection(ConnectionString))
             {
                 conn.Open();
-                var cmd = new SQLiteCommand("select * from ScheduleView", conn);
+                var cmd = new SQLiteCommand("select * from ScheduleView where [Группа]=@1", conn);
+                cmd.Parameters.AddWithValue("@1", group);
                 var da = new SQLiteDataAdapter(cmd);
                 var table = new DataTable();
                 da.Fill(table);
@@ -584,9 +585,9 @@ namespace ICS_MSHRC
             using (var conn = new SQLiteConnection(ConnectionString))
             {
                 conn.Open();
-                var str = "Среда";/*DateTime.Now.ToString("dddd");
-                str = str.Replace(str[0].ToString(), str[0].ToString().ToUpper());*/
-                var cmd = new SQLiteCommand(string.Format("select * from TodaySchedule where " +
+                var str = DateTime.Now.ToString("dddd");
+                str = str.Replace(str[0].ToString(), str[0].ToString().ToUpper());
+                var cmd = new SQLiteCommand(string.Format("select [Пара], [Предмет], [Группа], [Преподаватель] from TodaySchedule where " +
                     "[{0}]='{1}' and [День]='{2}' and ([Неделя]='Всегда' or [Неделя]='{3}')", column, value, str, week), conn);
                 var da = new SQLiteDataAdapter(cmd);
                 var table = new DataTable();

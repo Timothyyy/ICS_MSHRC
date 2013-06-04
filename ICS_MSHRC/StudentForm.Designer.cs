@@ -253,7 +253,6 @@
             this.confirm.Name = "confirm";
             this.confirm.Size = new System.Drawing.Size(103, 23);
             this.confirm.TabIndex = 14;
-            this.confirm.Text = "Редактировать";
             this.confirm.UseVisualStyleBackColor = true;
             this.confirm.Click += new System.EventHandler(this.confirm_Click);
             // 

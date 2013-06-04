@@ -95,6 +95,10 @@ namespace ICS_MSHRC
             {
                 tableView.DataSource = DBProvider.Students();
                 Settings("Студенты");
+                foreach (DataGridViewColumn col in tableView.Columns.Cast<DataGridViewColumn>().Where(col => col.Visible))
+                {
+                    comboBox1.Items.Add(col.HeaderText);
+                }
                 return;
             }
             if (e.Node.Name == "Instructors")

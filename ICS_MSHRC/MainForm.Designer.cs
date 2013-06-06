@@ -28,92 +28,100 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Проектирование и производство радиоэлектронных средств");
-            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Техническая эксплуатация радиоэлектронных средств");
-            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Радиотехническое отделение", new System.Windows.Forms.TreeNode[] {
-            treeNode1,
-            treeNode2});
-            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Электронные вычислительные средства");
-            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("Микроэлектроника");
-            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("Коммерческая деятельность");
-            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("Отделение электроники", new System.Windows.Forms.TreeNode[] {
-            treeNode4,
-            treeNode5,
-            treeNode6});
-            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("Отделение программирования");
-            System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("Радиоэлектроника (Профобучение)");
-            System.Windows.Forms.TreeNode treeNode10 = new System.Windows.Forms.TreeNode("Информатика (Профобучение)");
-            System.Windows.Forms.TreeNode treeNode11 = new System.Windows.Forms.TreeNode("Экономика и управление (Профобучение)");
-            System.Windows.Forms.TreeNode treeNode12 = new System.Windows.Forms.TreeNode("Факультет профессионального образования", new System.Windows.Forms.TreeNode[] {
-            treeNode9,
-            treeNode10,
-            treeNode11});
-            System.Windows.Forms.TreeNode treeNode13 = new System.Windows.Forms.TreeNode("Студенты", new System.Windows.Forms.TreeNode[] {
-            treeNode3,
-            treeNode7,
-            treeNode8,
-            treeNode12});
-            System.Windows.Forms.TreeNode treeNode14 = new System.Windows.Forms.TreeNode("Кафедра информатики");
-            System.Windows.Forms.TreeNode treeNode15 = new System.Windows.Forms.TreeNode("Кафедра радиоэлектроники");
-            System.Windows.Forms.TreeNode treeNode16 = new System.Windows.Forms.TreeNode("Кафедра математических и естественнонаучных дисциплин");
-            System.Windows.Forms.TreeNode treeNode17 = new System.Windows.Forms.TreeNode("Кафедра экономики и управления");
-            System.Windows.Forms.TreeNode treeNode18 = new System.Windows.Forms.TreeNode("Кафедра общетехнических дисциплин");
-            System.Windows.Forms.TreeNode treeNode19 = new System.Windows.Forms.TreeNode("Кафедра социально-гуманитарных дисциплин");
-            System.Windows.Forms.TreeNode treeNode20 = new System.Windows.Forms.TreeNode("Кафедра психолого-педагогических дисциплин");
-            System.Windows.Forms.TreeNode treeNode21 = new System.Windows.Forms.TreeNode("Кафедра физического воспитания и спорта");
-            System.Windows.Forms.TreeNode treeNode22 = new System.Windows.Forms.TreeNode("Преподаватели", new System.Windows.Forms.TreeNode[] {
-            treeNode14,
-            treeNode15,
-            treeNode16,
-            treeNode17,
-            treeNode18,
-            treeNode19,
-            treeNode20,
-            treeNode21});
-            System.Windows.Forms.TreeNode treeNode23 = new System.Windows.Forms.TreeNode("Проектирование и производство радиоэлектронных средств");
-            System.Windows.Forms.TreeNode treeNode24 = new System.Windows.Forms.TreeNode("Техническая эксплуатация радиоэлектронных средств");
-            System.Windows.Forms.TreeNode treeNode25 = new System.Windows.Forms.TreeNode("Радиотехническое отделение", new System.Windows.Forms.TreeNode[] {
-            treeNode23,
-            treeNode24});
-            System.Windows.Forms.TreeNode treeNode26 = new System.Windows.Forms.TreeNode("Электронные вычислительные средства");
-            System.Windows.Forms.TreeNode treeNode27 = new System.Windows.Forms.TreeNode("Микроэлектроника");
-            System.Windows.Forms.TreeNode treeNode28 = new System.Windows.Forms.TreeNode("Коммерческая деятельность");
-            System.Windows.Forms.TreeNode treeNode29 = new System.Windows.Forms.TreeNode("Отделение электроники", new System.Windows.Forms.TreeNode[] {
-            treeNode26,
-            treeNode27,
-            treeNode28});
-            System.Windows.Forms.TreeNode treeNode30 = new System.Windows.Forms.TreeNode("Отделение программирования");
-            System.Windows.Forms.TreeNode treeNode31 = new System.Windows.Forms.TreeNode("Радиоэлектроника (Профобучение)");
-            System.Windows.Forms.TreeNode treeNode32 = new System.Windows.Forms.TreeNode("Информатика (Профобучение)");
-            System.Windows.Forms.TreeNode treeNode33 = new System.Windows.Forms.TreeNode("Экономика и управление (Профобучение)");
-            System.Windows.Forms.TreeNode treeNode34 = new System.Windows.Forms.TreeNode("Факультет профессионального образования", new System.Windows.Forms.TreeNode[] {
-            treeNode31,
-            treeNode32,
-            treeNode33});
-            System.Windows.Forms.TreeNode treeNode35 = new System.Windows.Forms.TreeNode("Группы", new System.Windows.Forms.TreeNode[] {
-            treeNode25,
-            treeNode29,
-            treeNode30,
-            treeNode34});
-            System.Windows.Forms.TreeNode treeNode36 = new System.Windows.Forms.TreeNode("Кафедра информатики");
-            System.Windows.Forms.TreeNode treeNode37 = new System.Windows.Forms.TreeNode("Кафедра радиоэлектроники");
-            System.Windows.Forms.TreeNode treeNode38 = new System.Windows.Forms.TreeNode("Кафедра математических и естественнонаучных дисциплин");
-            System.Windows.Forms.TreeNode treeNode39 = new System.Windows.Forms.TreeNode("Кафедра экономики и управления");
-            System.Windows.Forms.TreeNode treeNode40 = new System.Windows.Forms.TreeNode("Кафедра общетехнических дисциплин");
-            System.Windows.Forms.TreeNode treeNode41 = new System.Windows.Forms.TreeNode("Кафедра социально-гуманитарных дисциплин");
-            System.Windows.Forms.TreeNode treeNode42 = new System.Windows.Forms.TreeNode("Кафедра психолого-педагогических дисциплин");
-            System.Windows.Forms.TreeNode treeNode43 = new System.Windows.Forms.TreeNode("Кафедра физического воспитания и спорта");
-            System.Windows.Forms.TreeNode treeNode44 = new System.Windows.Forms.TreeNode("Предметы", new System.Windows.Forms.TreeNode[] {
-            treeNode36,
-            treeNode37,
-            treeNode38,
-            treeNode39,
-            treeNode40,
-            treeNode41,
-            treeNode42,
-            treeNode43});
+            System.Windows.Forms.TreeNode treeNode45 = new System.Windows.Forms.TreeNode("Проектирование и производство радиоэлектронных средств");
+            System.Windows.Forms.TreeNode treeNode46 = new System.Windows.Forms.TreeNode("Техническая эксплуатация радиоэлектронных средств");
+            System.Windows.Forms.TreeNode treeNode47 = new System.Windows.Forms.TreeNode("Радиотехническое отделение", new System.Windows.Forms.TreeNode[] {
+            treeNode45,
+            treeNode46});
+            System.Windows.Forms.TreeNode treeNode48 = new System.Windows.Forms.TreeNode("Электронные вычислительные средства");
+            System.Windows.Forms.TreeNode treeNode49 = new System.Windows.Forms.TreeNode("Микроэлектроника");
+            System.Windows.Forms.TreeNode treeNode50 = new System.Windows.Forms.TreeNode("Коммерческая деятельность");
+            System.Windows.Forms.TreeNode treeNode51 = new System.Windows.Forms.TreeNode("Отделение электроники", new System.Windows.Forms.TreeNode[] {
+            treeNode48,
+            treeNode49,
+            treeNode50});
+            System.Windows.Forms.TreeNode treeNode52 = new System.Windows.Forms.TreeNode("Отделение программирования");
+            System.Windows.Forms.TreeNode treeNode53 = new System.Windows.Forms.TreeNode("Радиоэлектроника (Профобучение)");
+            System.Windows.Forms.TreeNode treeNode54 = new System.Windows.Forms.TreeNode("Информатика (Профобучение)");
+            System.Windows.Forms.TreeNode treeNode55 = new System.Windows.Forms.TreeNode("Экономика и управление (Профобучение)");
+            System.Windows.Forms.TreeNode treeNode56 = new System.Windows.Forms.TreeNode("Факультет профессионального образования", new System.Windows.Forms.TreeNode[] {
+            treeNode53,
+            treeNode54,
+            treeNode55});
+            System.Windows.Forms.TreeNode treeNode57 = new System.Windows.Forms.TreeNode("Студенты", new System.Windows.Forms.TreeNode[] {
+            treeNode47,
+            treeNode51,
+            treeNode52,
+            treeNode56});
+            System.Windows.Forms.TreeNode treeNode58 = new System.Windows.Forms.TreeNode("Кафедра информатики");
+            System.Windows.Forms.TreeNode treeNode59 = new System.Windows.Forms.TreeNode("Кафедра радиоэлектроники");
+            System.Windows.Forms.TreeNode treeNode60 = new System.Windows.Forms.TreeNode("Кафедра математических и естественнонаучных дисциплин");
+            System.Windows.Forms.TreeNode treeNode61 = new System.Windows.Forms.TreeNode("Кафедра экономики и управления");
+            System.Windows.Forms.TreeNode treeNode62 = new System.Windows.Forms.TreeNode("Кафедра общетехнических дисциплин");
+            System.Windows.Forms.TreeNode treeNode63 = new System.Windows.Forms.TreeNode("Кафедра социально-гуманитарных дисциплин");
+            System.Windows.Forms.TreeNode treeNode64 = new System.Windows.Forms.TreeNode("Кафедра психолого-педагогических дисциплин");
+            System.Windows.Forms.TreeNode treeNode65 = new System.Windows.Forms.TreeNode("Кафедра физического воспитания и спорта");
+            System.Windows.Forms.TreeNode treeNode66 = new System.Windows.Forms.TreeNode("Преподаватели", new System.Windows.Forms.TreeNode[] {
+            treeNode58,
+            treeNode59,
+            treeNode60,
+            treeNode61,
+            treeNode62,
+            treeNode63,
+            treeNode64,
+            treeNode65});
+            System.Windows.Forms.TreeNode treeNode67 = new System.Windows.Forms.TreeNode("Проектирование и производство радиоэлектронных средств");
+            System.Windows.Forms.TreeNode treeNode68 = new System.Windows.Forms.TreeNode("Техническая эксплуатация радиоэлектронных средств");
+            System.Windows.Forms.TreeNode treeNode69 = new System.Windows.Forms.TreeNode("Радиотехническое отделение", new System.Windows.Forms.TreeNode[] {
+            treeNode67,
+            treeNode68});
+            System.Windows.Forms.TreeNode treeNode70 = new System.Windows.Forms.TreeNode("Электронные вычислительные средства");
+            System.Windows.Forms.TreeNode treeNode71 = new System.Windows.Forms.TreeNode("Микроэлектроника");
+            System.Windows.Forms.TreeNode treeNode72 = new System.Windows.Forms.TreeNode("Коммерческая деятельность");
+            System.Windows.Forms.TreeNode treeNode73 = new System.Windows.Forms.TreeNode("Отделение электроники", new System.Windows.Forms.TreeNode[] {
+            treeNode70,
+            treeNode71,
+            treeNode72});
+            System.Windows.Forms.TreeNode treeNode74 = new System.Windows.Forms.TreeNode("Отделение программирования");
+            System.Windows.Forms.TreeNode treeNode75 = new System.Windows.Forms.TreeNode("Радиоэлектроника (Профобучение)");
+            System.Windows.Forms.TreeNode treeNode76 = new System.Windows.Forms.TreeNode("Информатика (Профобучение)");
+            System.Windows.Forms.TreeNode treeNode77 = new System.Windows.Forms.TreeNode("Экономика и управление (Профобучение)");
+            System.Windows.Forms.TreeNode treeNode78 = new System.Windows.Forms.TreeNode("Факультет профессионального образования", new System.Windows.Forms.TreeNode[] {
+            treeNode75,
+            treeNode76,
+            treeNode77});
+            System.Windows.Forms.TreeNode treeNode79 = new System.Windows.Forms.TreeNode("Группы", new System.Windows.Forms.TreeNode[] {
+            treeNode69,
+            treeNode73,
+            treeNode74,
+            treeNode78});
+            System.Windows.Forms.TreeNode treeNode80 = new System.Windows.Forms.TreeNode("Кафедра информатики");
+            System.Windows.Forms.TreeNode treeNode81 = new System.Windows.Forms.TreeNode("Кафедра радиоэлектроники");
+            System.Windows.Forms.TreeNode treeNode82 = new System.Windows.Forms.TreeNode("Кафедра математических и естественнонаучных дисциплин");
+            System.Windows.Forms.TreeNode treeNode83 = new System.Windows.Forms.TreeNode("Кафедра экономики и управления");
+            System.Windows.Forms.TreeNode treeNode84 = new System.Windows.Forms.TreeNode("Кафедра общетехнических дисциплин");
+            System.Windows.Forms.TreeNode treeNode85 = new System.Windows.Forms.TreeNode("Кафедра социально-гуманитарных дисциплин");
+            System.Windows.Forms.TreeNode treeNode86 = new System.Windows.Forms.TreeNode("Кафедра психолого-педагогических дисциплин");
+            System.Windows.Forms.TreeNode treeNode87 = new System.Windows.Forms.TreeNode("Кафедра физического воспитания и спорта");
+            System.Windows.Forms.TreeNode treeNode88 = new System.Windows.Forms.TreeNode("Предметы", new System.Windows.Forms.TreeNode[] {
+            treeNode80,
+            treeNode81,
+            treeNode82,
+            treeNode83,
+            treeNode84,
+            treeNode85,
+            treeNode86,
+            treeNode87});
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.splitContainer = new System.Windows.Forms.SplitContainer();
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.treeView = new System.Windows.Forms.TreeView();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.tableView = new System.Windows.Forms.DataGridView();
             this.menu = new System.Windows.Forms.MenuStrip();
             this.studentsMenu = new System.Windows.Forms.ToolStripMenuItem();
@@ -125,25 +133,17 @@
             this.subjectsMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.addSubjectMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.scheduleMenu = new System.Windows.Forms.ToolStripMenuItem();
-            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.treeView = new System.Windows.Forms.TreeView();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer)).BeginInit();
             this.splitContainer.Panel1.SuspendLayout();
             this.splitContainer.Panel2.SuspendLayout();
             this.splitContainer.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tableView)).BeginInit();
-            this.menu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tableView)).BeginInit();
+            this.menu.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer
@@ -165,6 +165,191 @@
             this.splitContainer.SplitterWidth = 1;
             this.splitContainer.TabIndex = 0;
             // 
+            // splitContainer1
+            // 
+            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer1.IsSplitterFixed = true;
+            this.splitContainer1.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer1.Name = "splitContainer1";
+            this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainer1.Panel1
+            // 
+            this.splitContainer1.Panel1.Controls.Add(this.treeView);
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.Controls.Add(this.groupBox1);
+            this.splitContainer1.Size = new System.Drawing.Size(166, 576);
+            this.splitContainer1.SplitterDistance = 288;
+            this.splitContainer1.SplitterWidth = 1;
+            this.splitContainer1.TabIndex = 0;
+            // 
+            // treeView
+            // 
+            this.treeView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.treeView.Location = new System.Drawing.Point(0, 0);
+            this.treeView.Name = "treeView";
+            treeNode45.Name = "Design";
+            treeNode45.Text = "Проектирование и производство радиоэлектронных средств";
+            treeNode46.Name = "Oper";
+            treeNode46.Text = "Техническая эксплуатация радиоэлектронных средств";
+            treeNode47.Name = "Radio";
+            treeNode47.Text = "Радиотехническое отделение";
+            treeNode48.Name = "Emu";
+            treeNode48.Text = "Электронные вычислительные средства";
+            treeNode49.Name = "Micro";
+            treeNode49.Text = "Микроэлектроника";
+            treeNode50.Name = "Commerc";
+            treeNode50.Text = "Коммерческая деятельность";
+            treeNode51.Name = "Electr";
+            treeNode51.Text = "Отделение электроники";
+            treeNode52.Name = "Progr";
+            treeNode52.Text = "Отделение программирования";
+            treeNode53.Name = "RadioFac";
+            treeNode53.Text = "Радиоэлектроника (Профобучение)";
+            treeNode54.Name = "InfoFac";
+            treeNode54.Text = "Информатика (Профобучение)";
+            treeNode55.Name = "EcoFac";
+            treeNode55.Text = "Экономика и управление (Профобучение)";
+            treeNode56.Name = "Faculty";
+            treeNode56.Text = "Факультет профессионального образования";
+            treeNode57.Name = "Students";
+            treeNode57.Text = "Студенты";
+            treeNode58.Name = "Inform";
+            treeNode58.Text = "Кафедра информатики";
+            treeNode59.Name = "Radioel";
+            treeNode59.Text = "Кафедра радиоэлектроники";
+            treeNode60.Name = "Math";
+            treeNode60.Text = "Кафедра математических и естественнонаучных дисциплин";
+            treeNode61.Name = "Econ";
+            treeNode61.Text = "Кафедра экономики и управления";
+            treeNode62.Name = "Basetech";
+            treeNode62.Text = "Кафедра общетехнических дисциплин";
+            treeNode63.Name = "Social";
+            treeNode63.Text = "Кафедра социально-гуманитарных дисциплин";
+            treeNode64.Name = "Psych";
+            treeNode64.Text = "Кафедра психолого-педагогических дисциплин";
+            treeNode65.Name = "Phys";
+            treeNode65.Text = "Кафедра физического воспитания и спорта";
+            treeNode66.Name = "Instructors";
+            treeNode66.Text = "Преподаватели";
+            treeNode67.Name = "DesignGr";
+            treeNode67.Text = "Проектирование и производство радиоэлектронных средств";
+            treeNode68.Name = "OperGr";
+            treeNode68.Text = "Техническая эксплуатация радиоэлектронных средств";
+            treeNode69.Name = "RadioGr";
+            treeNode69.Text = "Радиотехническое отделение";
+            treeNode70.Name = "EmuGr";
+            treeNode70.Text = "Электронные вычислительные средства";
+            treeNode71.Name = "MicroGr";
+            treeNode71.Text = "Микроэлектроника";
+            treeNode72.Name = "CommercGr";
+            treeNode72.Text = "Коммерческая деятельность";
+            treeNode73.Name = "ElectrGr";
+            treeNode73.Text = "Отделение электроники";
+            treeNode74.Name = "ProgrGr";
+            treeNode74.Text = "Отделение программирования";
+            treeNode75.Name = "RadioFacGr";
+            treeNode75.Text = "Радиоэлектроника (Профобучение)";
+            treeNode76.Name = "InfoFacGr";
+            treeNode76.Text = "Информатика (Профобучение)";
+            treeNode77.Name = "EcoFarGr";
+            treeNode77.Text = "Экономика и управление (Профобучение)";
+            treeNode78.Name = "FacultyGr";
+            treeNode78.Text = "Факультет профессионального образования";
+            treeNode79.Name = "Groups";
+            treeNode79.Text = "Группы";
+            treeNode80.Name = "Узел0";
+            treeNode80.Text = "Кафедра информатики";
+            treeNode81.Name = "Узел1";
+            treeNode81.Text = "Кафедра радиоэлектроники";
+            treeNode82.Name = "Узел2";
+            treeNode82.Text = "Кафедра математических и естественнонаучных дисциплин";
+            treeNode83.Name = "Узел3";
+            treeNode83.Text = "Кафедра экономики и управления";
+            treeNode84.Name = "Узел4";
+            treeNode84.Text = "Кафедра общетехнических дисциплин";
+            treeNode85.Name = "Узел5";
+            treeNode85.Text = "Кафедра социально-гуманитарных дисциплин";
+            treeNode86.Name = "Узел6";
+            treeNode86.Text = "Кафедра психолого-педагогических дисциплин";
+            treeNode87.Name = "Узел7";
+            treeNode87.Text = "Кафедра физического воспитания и спорта";
+            treeNode88.Name = "Subjects";
+            treeNode88.Text = "Предметы";
+            this.treeView.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
+            treeNode57,
+            treeNode66,
+            treeNode79,
+            treeNode88});
+            this.treeView.Size = new System.Drawing.Size(166, 288);
+            this.treeView.TabIndex = 17;
+            this.treeView.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView_AfterSelect);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.button1);
+            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.label7);
+            this.groupBox1.Controls.Add(this.label8);
+            this.groupBox1.Controls.Add(this.comboBox1);
+            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox1.Location = new System.Drawing.Point(0, 0);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(166, 287);
+            this.groupBox1.TabIndex = 18;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Поиск:";
+            // 
+            // button1
+            // 
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.button1.Location = new System.Drawing.Point(41, 98);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 4;
+            this.button1.Text = "Поиск";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox1.Location = new System.Drawing.Point(9, 72);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(151, 20);
+            this.textBox1.TabIndex = 3;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(6, 56);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(102, 13);
+            this.label7.TabIndex = 2;
+            this.label7.Text = "Введите значение:";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(6, 16);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(110, 13);
+            this.label8.TabIndex = 1;
+            this.label8.Text = "Выберите критерий:";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(9, 32);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(151, 21);
+            this.comboBox1.TabIndex = 0;
+            // 
             // tableView
             // 
             this.tableView.AllowUserToAddRows = false;
@@ -180,8 +365,8 @@
             this.tableView.Name = "tableView";
             this.tableView.ReadOnly = true;
             this.tableView.RowHeadersVisible = false;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.tableView.RowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.tableView.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.tableView.Size = new System.Drawing.Size(799, 576);
             this.tableView.TabIndex = 0;
             this.tableView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tableView_CellDoubleClick);
@@ -257,7 +442,7 @@
             // addSubjectMenu
             // 
             this.addSubjectMenu.Name = "addSubjectMenu";
-            this.addSubjectMenu.Size = new System.Drawing.Size(152, 22);
+            this.addSubjectMenu.Size = new System.Drawing.Size(126, 22);
             this.addSubjectMenu.Text = "Добавить";
             this.addSubjectMenu.Click += new System.EventHandler(this.addSubjectMenu_Click);
             // 
@@ -267,191 +452,6 @@
             this.scheduleMenu.Size = new System.Drawing.Size(84, 20);
             this.scheduleMenu.Text = "Расписание";
             this.scheduleMenu.Click += new System.EventHandler(this.scheduleMenu_Click);
-            // 
-            // splitContainer1
-            // 
-            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.IsSplitterFixed = true;
-            this.splitContainer1.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer1.Name = "splitContainer1";
-            this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
-            // 
-            // splitContainer1.Panel1
-            // 
-            this.splitContainer1.Panel1.Controls.Add(this.treeView);
-            // 
-            // splitContainer1.Panel2
-            // 
-            this.splitContainer1.Panel2.Controls.Add(this.groupBox1);
-            this.splitContainer1.Size = new System.Drawing.Size(166, 576);
-            this.splitContainer1.SplitterDistance = 288;
-            this.splitContainer1.SplitterWidth = 1;
-            this.splitContainer1.TabIndex = 0;
-            // 
-            // treeView
-            // 
-            this.treeView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.treeView.Location = new System.Drawing.Point(0, 0);
-            this.treeView.Name = "treeView";
-            treeNode1.Name = "Design";
-            treeNode1.Text = "Проектирование и производство радиоэлектронных средств";
-            treeNode2.Name = "Oper";
-            treeNode2.Text = "Техническая эксплуатация радиоэлектронных средств";
-            treeNode3.Name = "Radio";
-            treeNode3.Text = "Радиотехническое отделение";
-            treeNode4.Name = "Emu";
-            treeNode4.Text = "Электронные вычислительные средства";
-            treeNode5.Name = "Micro";
-            treeNode5.Text = "Микроэлектроника";
-            treeNode6.Name = "Commerc";
-            treeNode6.Text = "Коммерческая деятельность";
-            treeNode7.Name = "Electr";
-            treeNode7.Text = "Отделение электроники";
-            treeNode8.Name = "Progr";
-            treeNode8.Text = "Отделение программирования";
-            treeNode9.Name = "RadioFac";
-            treeNode9.Text = "Радиоэлектроника (Профобучение)";
-            treeNode10.Name = "InfoFac";
-            treeNode10.Text = "Информатика (Профобучение)";
-            treeNode11.Name = "EcoFac";
-            treeNode11.Text = "Экономика и управление (Профобучение)";
-            treeNode12.Name = "Faculty";
-            treeNode12.Text = "Факультет профессионального образования";
-            treeNode13.Name = "Students";
-            treeNode13.Text = "Студенты";
-            treeNode14.Name = "Inform";
-            treeNode14.Text = "Кафедра информатики";
-            treeNode15.Name = "Radioel";
-            treeNode15.Text = "Кафедра радиоэлектроники";
-            treeNode16.Name = "Math";
-            treeNode16.Text = "Кафедра математических и естественнонаучных дисциплин";
-            treeNode17.Name = "Econ";
-            treeNode17.Text = "Кафедра экономики и управления";
-            treeNode18.Name = "Basetech";
-            treeNode18.Text = "Кафедра общетехнических дисциплин";
-            treeNode19.Name = "Social";
-            treeNode19.Text = "Кафедра социально-гуманитарных дисциплин";
-            treeNode20.Name = "Psych";
-            treeNode20.Text = "Кафедра психолого-педагогических дисциплин";
-            treeNode21.Name = "Phys";
-            treeNode21.Text = "Кафедра физического воспитания и спорта";
-            treeNode22.Name = "Instructors";
-            treeNode22.Text = "Преподаватели";
-            treeNode23.Name = "DesignGr";
-            treeNode23.Text = "Проектирование и производство радиоэлектронных средств";
-            treeNode24.Name = "OperGr";
-            treeNode24.Text = "Техническая эксплуатация радиоэлектронных средств";
-            treeNode25.Name = "RadioGr";
-            treeNode25.Text = "Радиотехническое отделение";
-            treeNode26.Name = "EmuGr";
-            treeNode26.Text = "Электронные вычислительные средства";
-            treeNode27.Name = "MicroGr";
-            treeNode27.Text = "Микроэлектроника";
-            treeNode28.Name = "CommercGr";
-            treeNode28.Text = "Коммерческая деятельность";
-            treeNode29.Name = "ElectrGr";
-            treeNode29.Text = "Отделение электроники";
-            treeNode30.Name = "ProgrGr";
-            treeNode30.Text = "Отделение программирования";
-            treeNode31.Name = "RadioFacGr";
-            treeNode31.Text = "Радиоэлектроника (Профобучение)";
-            treeNode32.Name = "InfoFacGr";
-            treeNode32.Text = "Информатика (Профобучение)";
-            treeNode33.Name = "EcoFarGr";
-            treeNode33.Text = "Экономика и управление (Профобучение)";
-            treeNode34.Name = "FacultyGr";
-            treeNode34.Text = "Факультет профессионального образования";
-            treeNode35.Name = "Groups";
-            treeNode35.Text = "Группы";
-            treeNode36.Name = "Узел0";
-            treeNode36.Text = "Кафедра информатики";
-            treeNode37.Name = "Узел1";
-            treeNode37.Text = "Кафедра радиоэлектроники";
-            treeNode38.Name = "Узел2";
-            treeNode38.Text = "Кафедра математических и естественнонаучных дисциплин";
-            treeNode39.Name = "Узел3";
-            treeNode39.Text = "Кафедра экономики и управления";
-            treeNode40.Name = "Узел4";
-            treeNode40.Text = "Кафедра общетехнических дисциплин";
-            treeNode41.Name = "Узел5";
-            treeNode41.Text = "Кафедра социально-гуманитарных дисциплин";
-            treeNode42.Name = "Узел6";
-            treeNode42.Text = "Кафедра психолого-педагогических дисциплин";
-            treeNode43.Name = "Узел7";
-            treeNode43.Text = "Кафедра физического воспитания и спорта";
-            treeNode44.Name = "Subjects";
-            treeNode44.Text = "Предметы";
-            this.treeView.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode13,
-            treeNode22,
-            treeNode35,
-            treeNode44});
-            this.treeView.Size = new System.Drawing.Size(166, 288);
-            this.treeView.TabIndex = 17;
-            this.treeView.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView_AfterSelect);
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.button1);
-            this.groupBox1.Controls.Add(this.textBox1);
-            this.groupBox1.Controls.Add(this.label7);
-            this.groupBox1.Controls.Add(this.label8);
-            this.groupBox1.Controls.Add(this.comboBox1);
-            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox1.Location = new System.Drawing.Point(0, 0);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(166, 287);
-            this.groupBox1.TabIndex = 18;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Поиск:";
-            // 
-            // button1
-            // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Location = new System.Drawing.Point(41, 98);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "Поиск";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox1.Location = new System.Drawing.Point(9, 72);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(151, 20);
-            this.textBox1.TabIndex = 3;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(6, 56);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(102, 13);
-            this.label7.TabIndex = 2;
-            this.label7.Text = "Введите значение:";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(6, 16);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(110, 13);
-            this.label8.TabIndex = 1;
-            this.label8.Text = "Выберите критерий:";
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(9, 32);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(151, 21);
-            this.comboBox1.TabIndex = 0;
             // 
             // MainForm
             // 
@@ -468,15 +468,15 @@
             this.splitContainer.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer)).EndInit();
             this.splitContainer.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.tableView)).EndInit();
-            this.menu.ResumeLayout(false);
-            this.menu.PerformLayout();
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tableView)).EndInit();
+            this.menu.ResumeLayout(false);
+            this.menu.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 

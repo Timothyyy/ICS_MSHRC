@@ -174,7 +174,7 @@ namespace ICS_MSHRC
 
         #endregion
 
-        private static readonly string ConnectionString = @"Data Source=C:\Users\Тимми\Desktop\MSHRC.db";
+        private static readonly string ConnectionString = @"Data Source=C:\Users\Тимми\Desktop\MSHRC.db;foreign keys=True";
         //"Data Source=" + System.IO.Directory.GetCurrentDirectory() + "\\MSHRC.db";
         
         public static DataTable Students()
@@ -595,25 +595,5 @@ namespace ICS_MSHRC
                 cmd.ExecuteNonQuery();
             }
         }
-
-        /*public static void DeleteInstructor(int id)
-        {
-
-        }
-
-        public static void DeleteGroup(int id)
-        {
-
-        }
-
-        public static void DeleteSubject(int id)
-        {
-
-        }
-
-        public static void DeleteSchedule(int id)
-        {
-
-        }*/
     }                                           
 }

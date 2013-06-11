@@ -16,6 +16,14 @@ namespace ICS_MSHRC
             InitializeComponent();
         }
 
+        private enum Tables
+        {
+            StudentsView = 14,
+            InstructorsView = 11,
+            GroupsView = 5,
+            SubjectsView = 3,
+        };
+
         public static DialogResult SubjectBox(string title, ref string[] value)
         {
             var form = new Form();
@@ -83,10 +91,32 @@ namespace ICS_MSHRC
 
         private void Settings(string type)
         {
+            groupBox2.Enabled = true;
             tableView.Columns[0].Visible = false;
             foreach (ToolStripMenuItem item in menu.Items)
                 item.Enabled = item.Text == type;
             menu.Items[4].Enabled = true;
+            criterion.Items.Clear();
+            criterion.Text = "";
+            criterionValue.Text = "";
+            condition.Text = "";
+            if (type == "Студенты")
+            {
+                criterion.Items.AddRange(new object[] { "ФИО", "Адрес", "Дата рождения", "Мед. данные", "Хобби", "Группа" });
+            }
+            if (type == "Преподаватели")
+            {
+                criterion.Items.AddRange(new object[] { "ФИО", "Адрес", "Должность" });
+            }
+            if (type == "Группы")
+            {
+                criterion.Items.AddRange(new object[] { "Номер", "Куратор" });
+            }
+            if (type == "Предметы")
+            {
+                criterion.Items.Add("Название");
+                groupBox2.Enabled = false;
+            }
         }
 
         private void treeView_AfterSelect(object sender, TreeViewEventArgs e)
@@ -95,10 +125,6 @@ namespace ICS_MSHRC
             {
                 tableView.DataSource = DBProvider.Students();
                 Settings("Студенты");
-                foreach (DataGridViewColumn col in tableView.Columns.Cast<DataGridViewColumn>().Where(col => col.Visible))
-                {
-                    comboBox1.Items.Add(col.HeaderText);
-                }
                 return;
             }
             if (e.Node.Name == "Instructors")
@@ -119,12 +145,6 @@ namespace ICS_MSHRC
                 Settings("Предметы");
                 return;
             }
-            /*if (e.Node.Name == "Schedule")
-            {
-                tableView.DataSource = DBProvider.Schedules();
-                Settings("Расписание");
-                return;
-            }*/
             if (e.Node.Parent.Name == "Students")
             {
                 tableView.DataSource = DBProvider.Students(e.Node.Text);
@@ -267,24 +287,41 @@ namespace ICS_MSHRC
                     tableView.DataSource = DBProvider.Students();
                     return;
                 }
-                if (tableView.ColumnCount == 11)
+                if (tableView.ColumnCount == 11 && MessageBox.Show("При удалении преподавателя удалятся записи других таблиц, которые ссылаются на него! Действительно удалить?",
+                    "Предупреждение", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
                     DBProvider.DeleteRow("Instructors", Convert.ToInt32(tableView.CurrentRow.Cells[0].Value.ToString()));
                     tableView.DataSource = DBProvider.Instructors();
                     return;
                 }
-                if (tableView.ColumnCount == 5)
+                if (tableView.ColumnCount == 5 && MessageBox.Show("При удалении группы удалятся записи других таблиц, которые ссылаются на неё! Действительно удалить?",
+                    "Предупреждение", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
                     DBProvider.DeleteRow("Groups", Convert.ToInt32(tableView.CurrentRow.Cells[0].Value.ToString()));
                     tableView.DataSource = DBProvider.Groups();
                     return;
                 }
-                if (tableView.ColumnCount == 3)
+                if (tableView.ColumnCount == 3 && MessageBox.Show("При удалении предмета удалятся записи других таблиц, которые ссылаются на него! Действительно удалить?",
+                    "Предупреждение", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
                     DBProvider.DeleteRow("Subjects", Convert.ToInt32(tableView.CurrentRow.Cells[0].Value.ToString()));
                     tableView.DataSource = DBProvider.Subjects();
                 }
             }
+        }
+
+        private void search_Click(object sender, EventArgs e)
+        {
+            if (criterion.Text != "")
+            {
+                tableView.DataSource = DBProvider.Search(Enum.GetName(typeof(Tables), tableView.ColumnCount), criterion.Text, criterionValue.Text);
+                MessageBox.Show("Найдено записей: " + tableView.RowCount.ToString(), "Результаты поиска");
+            }
+        }
+
+        private void criterion_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
         }
     }
 }

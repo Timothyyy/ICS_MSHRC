@@ -8,6 +8,16 @@ using System.Windows.Forms;
 
 namespace ICS_MSHRC
 {
+    [SQLiteFunction(Arguments = 1, FuncType = FunctionType.Scalar, Name = "ToUpper")]
+    public class SQLiteToUpper : SQLiteFunction
+    {
+        public override object Invoke(object[] args)
+        {
+            var column = /*System.Threading.Thread.CurrentThread.CurrentCulture.TextInfo.ToUpper(*/args[0].ToString().ToUpper();
+            return column;
+        }
+    }
+
     public static class DBProvider
     {
         public class Student
@@ -175,7 +185,7 @@ namespace ICS_MSHRC
         #endregion
 
         private static readonly string ConnectionString = @"Data Source=C:\Users\Тимми\Desktop\MSHRC.db;foreign keys=True";
-        //"Data Source=" + System.IO.Directory.GetCurrentDirectory() + "\\MSHRC.db";
+        //"Data Source=" + System.IO.Directory.GetCurrentDirectory() + "\\MSHRC.db;foreign keys=True";
         
         public static DataTable Students()
         {
@@ -593,6 +603,19 @@ namespace ICS_MSHRC
                 conn.Open();
                 var cmd = new SQLiteCommand(string.Format("delete from {0} where Id={1}", table, id), conn);
                 cmd.ExecuteNonQuery();
+            }
+        }
+
+        public static DataTable Search(string tableName, string column, string value)
+        {
+            using (var conn = new SQLiteConnection(ConnectionString))
+            {
+                conn.Open();
+                var cmd = new SQLiteCommand(string.Format("select * from {0} where ToUpper({1}) like ToUpper('%{2}%')", tableName, column, value), conn);
+                var da = new SQLiteDataAdapter(cmd);
+                var table = new DataTable();
+                da.Fill(table);
+                return table;
             }
         }
     }                                           

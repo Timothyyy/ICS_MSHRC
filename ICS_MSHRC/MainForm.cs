@@ -141,84 +141,98 @@ namespace ICS_MSHRC
         {
             if (e.Node.Name == "Students")
             {
+                tableView.DataSource = null;
                 tableView.DataSource = DBProvider.Students();
                 Settings("Студенты");
                 return;
             }
             if (e.Node.Name == "Instructors")
             {
+                tableView.DataSource = null;
                 tableView.DataSource = DBProvider.Instructors();
                 Settings("Преподаватели");
                 return;
             }
             if (e.Node.Name == "Groups")
             {
+                tableView.DataSource = null;
                 tableView.DataSource = DBProvider.Groups();
                 Settings("Группы");
                 return;
             }
             if (e.Node.Name == "Subjects")
             {
+                tableView.DataSource = null;
                 tableView.DataSource = DBProvider.Subjects();
                 Settings("Предметы");
                 return;
             }
             if (e.Node.Parent.Name == "Students")
             {
+                tableView.DataSource = null;
                 tableView.DataSource = DBProvider.Students(e.Node.Text);
                 Settings("Студенты");
                 return;
             }
             if (e.Node.Parent.Name == "Radio")
             {
+                tableView.DataSource = null;
                 tableView.DataSource = DBProvider.Students(e.Node.Index + 1);
                 Settings("Студенты");
                 return;
             }
             if (e.Node.Parent.Name == "Electr")
             {
+                tableView.DataSource = null;
                 tableView.DataSource = DBProvider.Students(e.Node.Index + 3);
                 Settings("Студенты");
                 return;
             }
             if (e.Node.Parent.Name == "Faculty")
             {
+                tableView.DataSource = null;
                 tableView.DataSource = DBProvider.Students(e.Node.Index + 7);
                 Settings("Студенты");
                 return;
             }
             if (e.Node.Parent.Name == "Instructors")
             {
+                tableView.DataSource = null;
                 tableView.DataSource = DBProvider.Instructors(e.Node.Index + 1);
                 Settings("Преподаватели");
                 return;
             }
             if (e.Node.Parent.Name == "Groups")
             {
+                tableView.DataSource = null;
                 tableView.DataSource = DBProvider.Groups(e.Node.Text);
                 Settings("Группы");
                 return;
             }
             if (e.Node.Parent.Name == "RadioGr")
             {
+                tableView.DataSource = null;
                 tableView.DataSource = DBProvider.Groups(e.Node.Index + 1);
                 Settings("Группы");
                 return;
             }
             if (e.Node.Parent.Name == "ElectrGr")
             {
+                tableView.DataSource = null;
                 tableView.DataSource = DBProvider.Groups(e.Node.Index + 3);
                 Settings("Группы");
                 return;
             }
             if (e.Node.Parent.Name == "FacultyGr")
             {
+                tableView.DataSource = null;
                 tableView.DataSource = DBProvider.Groups(e.Node.Index + 7);
                 Settings("Группы");
                 return;
             }
             if (e.Node.Parent.Name == "Subjects")
             {
+                tableView.DataSource = null;
                 tableView.DataSource = DBProvider.Subjects(e.Node.Index + 1);
                 Settings("Предметы");
             }

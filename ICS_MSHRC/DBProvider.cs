@@ -184,8 +184,8 @@ namespace ICS_MSHRC
 
         #endregion
 
-        private static readonly string ConnectionString = @"Data Source=C:\Users\Тимми\Desktop\MSHRC.db;foreign keys=True";
-        //"Data Source=" + System.IO.Directory.GetCurrentDirectory() + "\\MSHRC.db;foreign keys=True";
+        private static readonly string ConnectionString = //@"Data Source=C:\Users\Тимми\Desktop\MSHRC.db;foreign keys=True";
+        "Data Source=" + System.IO.Directory.GetCurrentDirectory() + "\\MSHRC.db;foreign keys=True";
         
         public static DataTable Students()
         {

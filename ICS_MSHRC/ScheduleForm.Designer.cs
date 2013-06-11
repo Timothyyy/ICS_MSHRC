@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.todaySchedule = new System.Windows.Forms.TabPage();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
@@ -43,7 +43,7 @@
             this.todayScheduleView = new System.Windows.Forms.DataGridView();
             this.scheduleAdmin = new System.Windows.Forms.TabPage();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
-            this.scheduleView = new System.Windows.Forms.DataGridView();
+            this.cancel = new System.Windows.Forms.Button();
             this.confirm = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.weekPanel = new System.Windows.Forms.Panel();
@@ -60,7 +60,7 @@
             this.label7 = new System.Windows.Forms.Label();
             this.Subject = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.cancel = new System.Windows.Forms.Button();
+            this.scheduleView = new System.Windows.Forms.DataGridView();
             this.tabControl.SuspendLayout();
             this.todaySchedule.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -74,9 +74,9 @@
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.scheduleView)).BeginInit();
             this.weekPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Pair)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.scheduleView)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl
@@ -97,7 +97,7 @@
             this.todaySchedule.Location = new System.Drawing.Point(4, 22);
             this.todaySchedule.Name = "todaySchedule";
             this.todaySchedule.Padding = new System.Windows.Forms.Padding(3);
-            this.todaySchedule.Size = new System.Drawing.Size(857, 327);
+            this.todaySchedule.Size = new System.Drawing.Size(755, 327);
             this.todaySchedule.TabIndex = 0;
             this.todaySchedule.Text = "Расписание на сегодня";
             // 
@@ -118,7 +118,7 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.todayScheduleView);
-            this.splitContainer1.Size = new System.Drawing.Size(851, 321);
+            this.splitContainer1.Size = new System.Drawing.Size(749, 321);
             this.splitContainer1.SplitterDistance = 245;
             this.splitContainer1.SplitterWidth = 1;
             this.splitContainer1.TabIndex = 0;
@@ -212,21 +212,21 @@
             this.todayScheduleView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.todayScheduleView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.todayScheduleView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.todayScheduleView.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.todayScheduleView.DefaultCellStyle = dataGridViewCellStyle4;
             this.todayScheduleView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.todayScheduleView.Location = new System.Drawing.Point(0, 0);
             this.todayScheduleView.MultiSelect = false;
             this.todayScheduleView.Name = "todayScheduleView";
             this.todayScheduleView.ReadOnly = true;
             this.todayScheduleView.RowHeadersVisible = false;
-            this.todayScheduleView.Size = new System.Drawing.Size(605, 321);
+            this.todayScheduleView.Size = new System.Drawing.Size(503, 321);
             this.todayScheduleView.TabIndex = 0;
             // 
             // scheduleAdmin
@@ -273,33 +273,16 @@
             this.splitContainer2.SplitterWidth = 1;
             this.splitContainer2.TabIndex = 0;
             // 
-            // scheduleView
+            // cancel
             // 
-            this.scheduleView.AllowUserToAddRows = false;
-            this.scheduleView.AllowUserToDeleteRows = false;
-            this.scheduleView.AllowUserToResizeColumns = false;
-            this.scheduleView.AllowUserToResizeRows = false;
-            this.scheduleView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.scheduleView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.scheduleView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.scheduleView.DefaultCellStyle = dataGridViewCellStyle2;
-            this.scheduleView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.scheduleView.Location = new System.Drawing.Point(0, 0);
-            this.scheduleView.MultiSelect = false;
-            this.scheduleView.Name = "scheduleView";
-            this.scheduleView.ReadOnly = true;
-            this.scheduleView.RowHeadersVisible = false;
-            this.scheduleView.Size = new System.Drawing.Size(527, 321);
-            this.scheduleView.TabIndex = 0;
-            this.scheduleView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.scheduleView_CellDoubleClick);
-            this.scheduleView.KeyDown += new System.Windows.Forms.KeyEventHandler(this.scheduleView_KeyDown);
+            this.cancel.Enabled = false;
+            this.cancel.Location = new System.Drawing.Point(115, 278);
+            this.cancel.Name = "cancel";
+            this.cancel.Size = new System.Drawing.Size(101, 23);
+            this.cancel.TabIndex = 29;
+            this.cancel.Text = "Отмена";
+            this.cancel.UseVisualStyleBackColor = true;
+            this.cancel.Click += new System.EventHandler(this.cancel_Click);
             // 
             // confirm
             // 
@@ -485,16 +468,33 @@
             this.label8.TabIndex = 16;
             this.label8.Text = "Предмет:";
             // 
-            // cancel
+            // scheduleView
             // 
-            this.cancel.Enabled = false;
-            this.cancel.Location = new System.Drawing.Point(115, 278);
-            this.cancel.Name = "cancel";
-            this.cancel.Size = new System.Drawing.Size(101, 23);
-            this.cancel.TabIndex = 29;
-            this.cancel.Text = "Отмена";
-            this.cancel.UseVisualStyleBackColor = true;
-            this.cancel.Click += new System.EventHandler(this.cancel_Click);
+            this.scheduleView.AllowUserToAddRows = false;
+            this.scheduleView.AllowUserToDeleteRows = false;
+            this.scheduleView.AllowUserToResizeColumns = false;
+            this.scheduleView.AllowUserToResizeRows = false;
+            this.scheduleView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.scheduleView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.scheduleView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.scheduleView.DefaultCellStyle = dataGridViewCellStyle3;
+            this.scheduleView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.scheduleView.Location = new System.Drawing.Point(0, 0);
+            this.scheduleView.MultiSelect = false;
+            this.scheduleView.Name = "scheduleView";
+            this.scheduleView.ReadOnly = true;
+            this.scheduleView.RowHeadersVisible = false;
+            this.scheduleView.Size = new System.Drawing.Size(527, 321);
+            this.scheduleView.TabIndex = 0;
+            this.scheduleView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.scheduleView_CellDoubleClick);
+            this.scheduleView.KeyDown += new System.Windows.Forms.KeyEventHandler(this.scheduleView_KeyDown);
             // 
             // ScheduleForm
             // 
@@ -520,10 +520,10 @@
             this.splitContainer2.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.scheduleView)).EndInit();
             this.weekPanel.ResumeLayout(false);
             this.weekPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Pair)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.scheduleView)).EndInit();
             this.ResumeLayout(false);
 
         }

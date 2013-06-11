@@ -69,7 +69,7 @@ namespace ICS_MSHRC
 
         private void choice_SelectedIndexChanged(object sender, EventArgs e)
         {
-            var column = Enum.GetName(typeof(Column), scheduleFor.SelectedIndex);
+            var column = Enum.GetName(typeof (Column), scheduleFor.SelectedIndex);
             var week = panel.Controls.OfType<RadioButton>().First(r => r.Checked).Text;
             todayScheduleView.DataSource = DBProvider.TodaySchedule(column, choice.Text, week);
         }
@@ -84,7 +84,7 @@ namespace ICS_MSHRC
             if (choice.Text != "")
                 if (((RadioButton) sender).Checked)
                 {
-                    var column = Enum.GetName(typeof(Column), scheduleFor.SelectedIndex);
+                    var column = Enum.GetName(typeof (Column), scheduleFor.SelectedIndex);
                     var week = ((RadioButton) sender).Text;
                     todayScheduleView.DataSource = DBProvider.TodaySchedule(column, choice.Text, week);
                 }
@@ -116,7 +116,9 @@ namespace ICS_MSHRC
                 Instructor.Text = scheduleView.Rows[e.RowIndex].Cells[3].Value.ToString();
                 Day.Text = scheduleView.Rows[e.RowIndex].Cells[4].Value.ToString();
                 Pair.Text = scheduleView.Rows[e.RowIndex].Cells[5].Value.ToString();
-                weekPanel.Controls.OfType<RadioButton>().First(r => r.Text == scheduleView.Rows[e.RowIndex].Cells[6].Value.ToString()).Checked = true;
+                weekPanel.Controls.OfType<RadioButton>()
+                         .First(r => r.Text == scheduleView.Rows[e.RowIndex].Cells[6].Value.ToString())
+                         .Checked = true;
             }
         }
 
@@ -138,19 +140,24 @@ namespace ICS_MSHRC
                 MessageBox.Show("Все поля должны быть заполнены!", "Ошибка");
                 return;
             }
-            var schedule = new DBProvider.Schedule(Subject.Text, Group.Text, Instructor.Text, Day.Text, Convert.ToInt32(Pair.Text),
-                weekPanel.Controls.OfType<RadioButton>().First(r => r.Checked).Text);
+            var schedule = new DBProvider.Schedule(Subject.Text, Group.Text, Instructor.Text, Day.Text,
+                                                   Convert.ToInt32(Pair.Text),
+                                                   weekPanel.Controls.OfType<RadioButton>().First(r => r.Checked).Text);
             if (confirm.Text == "Добавить")
                 DBProvider.AddSchedule(schedule);
             else
-                DBProvider.UpdateSchedule(schedule, Convert.ToInt32(scheduleView.Rows[scheduleView.SelectedCells[0].RowIndex].Cells[0].Value));
+                DBProvider.UpdateSchedule(schedule,
+                                          Convert.ToInt32(
+                                              scheduleView.Rows[scheduleView.SelectedCells[0].RowIndex].Cells[0].Value));
             scheduleView.DataSource = DBProvider.Schedules(Group.Text);
             cancel_Click(null, null);
         }
 
         private void scheduleView_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Delete && MessageBox.Show("Вы действительно хотите удалить выбранную запись?", "Предупреждение", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            if (e.KeyCode == Keys.Delete &&
+                MessageBox.Show("Вы действительно хотите удалить выбранную запись?", "Предупреждение",
+                                MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 DBProvider.DeleteRow("Schedule", Convert.ToInt32(scheduleView.CurrentRow.Cells[0].Value.ToString()));
                 scheduleView.DataSource = DBProvider.Schedules(Group.Text);

@@ -611,7 +611,20 @@ namespace ICS_MSHRC
             using (var conn = new SQLiteConnection(ConnectionString))
             {
                 conn.Open();
-                var cmd = new SQLiteCommand(string.Format("select * from {0} where ToUpper({1}) like ToUpper('%{2}%')", tableName, column, value), conn);
+                var cmd = new SQLiteCommand(string.Format("select * from {0} where ToUpper([{1}]) like ToUpper('%{2}%')", tableName, column, value), conn);
+                var da = new SQLiteDataAdapter(cmd);
+                var table = new DataTable();
+                da.Fill(table);
+                return table;
+            }
+        }
+
+        public static DataTable Filter(string tableName, string SQL)
+        {
+            using (var conn = new SQLiteConnection(ConnectionString))
+            {
+                conn.Open();
+                var cmd = new SQLiteCommand(string.Format("select * from {0} where {1}", tableName, SQL), conn);
                 var da = new SQLiteDataAdapter(cmd);
                 var table = new DataTable();
                 da.Fill(table);

@@ -24,6 +24,20 @@ namespace ICS_MSHRC
             SubjectsView = 3,
         };
 
+        private Dictionary<string, string> SQL = new Dictionary<string, string>
+            {
+                {"Девушки", "[Пол] = 'Женский'"}, 
+                {"Юноши", "[Пол] = 'Мужской'"},
+                {"Иногородние", "ToUpper([Адрес]) not like ToUpper('%г%Минск%')"}, 
+                {"Иностранцы", "[Гражданство] != 'Беларусь'"},
+                {"Несовершеннолетние", "date('now') - date([Дата рождения]) < 18"}, 
+                {"Совершеннолетние", "date('now') - date([Дата рождения]) >= 18"},
+                {"В общежитии", "[Общежитие] = 1"},
+                {"Женщины", "[Пол] = 'Женский'"}, 
+                {"Мужчины", "[Пол] = 'Мужской'"},
+                {"Кураторы", "Id in (select Curator from Groups)"}
+            }; 
+
         public static DialogResult SubjectBox(string title, ref string[] value)
         {
             var form = new Form();
@@ -71,7 +85,7 @@ namespace ICS_MSHRC
             form.ClientSize = new Size(305, 100);
             form.Controls.AddRange(new Control[] { label1, label2, name, department, buttonOk });
             form.FormBorderStyle = FormBorderStyle.FixedDialog;
-            form.StartPosition = FormStartPosition.CenterScreen;
+            form.StartPosition = FormStartPosition.WindowsDefaultLocation;
             form.MinimizeBox = false;
             form.MaximizeBox = false;
             form.AcceptButton = buttonOk;
@@ -97,20 +111,24 @@ namespace ICS_MSHRC
                 item.Enabled = item.Text == type;
             menu.Items[4].Enabled = true;
             criterion.Items.Clear();
+            condition.Items.Clear();
             criterion.Text = "";
             criterionValue.Text = "";
             condition.Text = "";
             if (type == "Студенты")
             {
                 criterion.Items.AddRange(new object[] { "ФИО", "Адрес", "Дата рождения", "Мед. данные", "Хобби", "Группа" });
+                condition.Items.AddRange(new object[] { "Девушки", "Юноши", "Иногородние", "Иностранцы", "Несовершеннолетние", "Совершеннолетние", "В общежитии" });
             }
             if (type == "Преподаватели")
             {
                 criterion.Items.AddRange(new object[] { "ФИО", "Адрес", "Должность" });
+                condition.Items.AddRange(new object[] { "Мужчины", "Женщины", "Кураторы" });
             }
             if (type == "Группы")
             {
                 criterion.Items.AddRange(new object[] { "Номер", "Куратор" });
+                groupBox2.Enabled = false;
             }
             if (type == "Предметы")
             {
@@ -315,13 +333,22 @@ namespace ICS_MSHRC
             if (criterion.Text != "")
             {
                 tableView.DataSource = DBProvider.Search(Enum.GetName(typeof(Tables), tableView.ColumnCount), criterion.Text, criterionValue.Text);
-                MessageBox.Show("Найдено записей: " + tableView.RowCount.ToString(), "Результаты поиска");
+                MessageBox.Show("Найдено записей: " + tableView.RowCount, "Результаты поиска");
             }
         }
 
         private void criterion_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = true;
+        }
+
+        private void filter_Click(object sender, EventArgs e)
+        {
+            if (condition.Text != "")
+            {
+                tableView.DataSource = DBProvider.Filter(Enum.GetName(typeof(Tables), tableView.ColumnCount), SQL.FirstOrDefault(p => p.Key == condition.Text).Value);
+                MessageBox.Show("Найдено записей: " + tableView.RowCount, "Результаты фильтра");
+            }
         }
     }
 }
